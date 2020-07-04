@@ -1,0 +1,102 @@
+// VARIABLES
+$primary: rgb(77, 77, 233);
+$secondary: #777777;
+$dark: #202124;
+$light: #ffffff;
+
+// BOOTSTRAP
+$theme-colors: (
+  "primary": $primary,
+  "light": $light,
+  "dark": $dark,
+  "secondary": $secondary
+);
+
+// BACKGROUNDS HOVERS
+.bg-hover-primary:hover {
+  background-color: rgb(153, 153, 255);
+}
+.bg-hover-secondary:hover {
+  background-color: #acacac;
+}
+.bg-hover-dark:hover {
+  background-color: #535353;
+}
+.bg-hover-light:hover {
+  background-color: #ebebeb;
+}
+
+
+// MARGIN
+.mx-6 {
+  margin: 0 5rem;
+}
+.mx-7 {
+  margin: 0 7rem;
+}
+.mx-8 {
+  margin: 0 9rem;
+}
+.mx-9 {
+  margin: 0 10rem;
+}
+.mx-10 {
+  margin: 0 15rem;
+}
+
+// PADDING
+.px-6 {
+  padding: 0 5rem;
+}
+.px-7 {
+  padding: 0 7rem;
+}
+.px-8 {
+  padding: 0 9rem;
+}
+.px-9 {
+  padding: 0 10rem;
+}
+.px-10 {
+  padding: 0 15rem;
+}
+
+// TRANSITIONS
+.transition-02 {
+  transition: 0.2s;
+}
+
+.transition-03 {
+  transition: 0.3s;
+}
+
+.transition-04 {
+  transition: 0.4s;
+}
+
+.transition-05 {
+  transition: 0.5s;
+}
+
+// FONT SIZE
+.f-15 {
+  font-size: 15px;
+}
+.f-18 {
+  font-size: 18px;
+}
+.f-20 {
+  font-size: 20px;
+}
+.f-25 {
+  font-size: 25px;
+}
+.f-30 {
+  font-size: 30px;
+}
+.f-35 {
+  font-size: 35px;
+}
+.f-40 {
+  font-size: 40px;
+}

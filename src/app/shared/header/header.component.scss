@@ -1,0 +1,99 @@
+@import "~assets/styles/themes.scss";
+
+.custom-search-input {
+  padding: 3px;
+  border: solid 1px $primary;
+  border-radius: 6px;
+  background-color: #fff;
+  height: 30px;
+  width: 100%;
+}
+
+.custom-search-input input {
+  border: 0;
+  box-shadow: none;
+  height: 20px;
+}
+
+.custom-search-input button {
+  background: none;
+  box-shadow: none;
+  border: 0;
+  color: rgb(77, 77, 233);
+  padding: 0 8px 0 10px;
+}
+
+.navbar-toggler {
+  border-color: $primary;
+}
+
+.logo {
+  border-radius: 50px;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(77, 77, 233);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: rgb(77, 77, 233);
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: rgb(77, 77, 233);
+}
+
+.side-item-category:hover {
+  transition: 0.2s;
+  font-size: 18px;
+}
+
+.sidenav {
+  height: 100%;
+  margin-top: 88px;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  border: solid 1px rgb(218, 218, 218);
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.closebtn {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  &:hover {
+    color: $dark !important;
+  }
+}
+
+#main {
+  transition: margin-left 0.5s;
+  padding: 20px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+.img-teste {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}

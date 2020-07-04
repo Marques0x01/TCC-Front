@@ -1,0 +1,86 @@
+<nav class="navbar-light bg-light py-4" [ngClass]="pageWidth > 1000 ? 'px-8' : 'px-5'"
+  (window:resize)="onResize($event)">
+  <div class="row">
+    <div class="col-8">
+      <div class="d-flex align-items-center">
+        <img src="../assets/icons/mario-icon.png" alt="logo" width="40px" height="40px" class="logo" />
+        <div class="f-18 mx-3 text-primary font-weight-bold">CONCLUSÃO</div>
+
+        <div class="d-flex align-items-center" *ngIf="pageWidth > 1000">
+          <div class="custom-search-input mr-3">
+            <div class="input-group">
+              <input type="text" class="form-control text-primary input-lg" placeholder="Buscar" />
+              <span class="input-group-btn">
+                <button class="btn btn-info btn-lg" type="button">
+                  <i class="material-icons f-25">search</i>
+                </button>
+              </span>
+            </div>
+          </div>
+          <div class="dropdown-category" (mouseenter)="dropdown.open();" (mouseleave)="dropdown.close();">
+            <div ngbDropdown #dropdown="ngbDropdown" class="d-inline-block p-1">
+              <button class="btn btn-outline-primary" id="dropdown-category" ngbDropdownToggle>Categorias</button>
+              <div ngbDropdownMenu aria-labelledby="dropdown-category">
+                <button ngbDropdownItem class="text-primary">Eletricos</button>
+                <button ngbDropdownItem class="text-primary">Festas</button>
+                <button ngbDropdownItem class="text-primary">Esportes</button>
+                <button ngbDropdownItem class="text-primary">Livros</button>
+                <button ngbDropdownItem class="text-primary">Musica</button>
+                <button ngbDropdownItem class="text-primary">Mobilias</button>
+                <button ngbDropdownItem class="text-primary">Roupas</button>
+                <div class="dropdown-divider"></div>
+                <button ngbDropdownItem class="text-primary">Outros</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-4 d-flex justify-content-end align-items-center">
+      <button class="font-weight-bold f-18 pointer d-flex align-items-center btn btn-primary btn-radius"
+        *ngIf="pageWidth > 1000">
+        <i class="material-icons text-light f-25 mr-1 font-weight-bold">account_circle</i>
+        <span>Login</span>
+      </button>
+      <button class="navbar-toggler text-primary" type="button" (click)="toggleNav()" *ngIf="pageWidth <= 1000"
+        #SidenavButton>
+        &#9776;
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+<div #Sidenav id="sideNav" class="sidenav bg-light text-primary">
+  <div>
+    <ul class="list-group">
+      <li class="list-group-item bg-hover-light d-flex align-items-center pointer">
+        <i class="material-icons f-25 mr-1 font-weight-bold">person_outline</i>
+        <span> Login </span>
+      </li>
+      <li class="list-group-item bg-hover-light d-flex align-items-center pointer">
+        <i class="material-icons f-25 mr-1 font-weight-bold">search</i>
+        <span>Buscar</span>
+      </li>
+      <li class="list-group-item bg-hover-light d-flex align-items-center pointer" (click)="isCollapsed = !isCollapsed"
+        [attr.aria-expanded]="!isCollapsed">
+        <i class="material-icons f-25 mr-1 font-weight-bold">layers</i>
+        <span>Categorias</span>
+      </li>
+      <li class="list-group-item d-flex align-items-centerpointer" *ngIf="!isCollapsed">
+        <div [ngbCollapse]="isCollapsed">
+          <div class="text-primary p-2 ml-4 side-item-category pointer">Eletronicos </div>
+          <div class="text-primary p-2 ml-4 side-item-category pointer">Festas </div>
+          <div class="text-primary p-2 ml-4 side-item-category pointer">Esportes </div>
+          <div class="text-primary p-2 ml-4 side-item-category pointer">Livros </div>
+          <div class="text-primary p-2 ml-4 side-item-category pointer">Musica </div>
+          <div class="text-primary p-2 ml-4 side-item-category pointer">Mobilias </div>
+          <div class="text-primary p-2 ml-4 side-item-category pointer">Roupas </div>
+          <div class="text-primary p-2 ml-4 side-item-category pointer">Outros </div>
+        </div>
+      </li>
+    </ul>
+    <a class="closebtn f-25 pointer" (click)="closeNav()">&times;</a>
+  </div>
+</div>
