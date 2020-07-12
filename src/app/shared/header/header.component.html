@@ -1,9 +1,9 @@
-<nav class="navbar-light bg-light py-4" [ngClass]="pageWidth > 1000 ? 'px-8' : 'px-5'"
+<nav class="navbar-light bg-light py-2" [ngClass]="pageWidth > 1000 ? 'px-8' : 'px-5'"
   (window:resize)="onResize($event)">
   <div class="row">
     <div class="col-8">
       <div class="d-flex align-items-center">
-        <img src="../assets/icons/mario-icon.png" alt="logo" width="40px" height="40px" class="logo" />
+        <img src="../assets/icons/icon.png" width="80" height="80" alt="logo" class="logo" />
         <div class="f-18 mx-3 text-primary font-weight-bold">CONCLUSÃO</div>
 
         <div class="d-flex align-items-center" *ngIf="pageWidth > 1000">
@@ -66,7 +66,7 @@
       <li class="list-group-item bg-hover-light d-flex align-items-center pointer" (click)="isCollapsed = !isCollapsed"
         [attr.aria-expanded]="!isCollapsed">
         <i class="material-icons f-25 mr-1 font-weight-bold">layers</i>
-        <span>Categorias</span>
+        <span>Categorias</span> 
       </li>
       <li class="list-group-item d-flex align-items-centerpointer" *ngIf="!isCollapsed">
         <div [ngbCollapse]="isCollapsed">

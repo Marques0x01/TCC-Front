@@ -1,0 +1,51 @@
+@import "~assets/styles/themes.scss";
+
+.user_card {
+    height: 520px;
+    width: 450px;
+    margin-top: auto;
+    margin-bottom: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.205), 0 6px 20px 0 rgba(0, 0, 0, 0.247);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.205), 0 6px 20px 0 rgba(0, 0, 0, 0.247);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.205), 0 6px 20px 0 rgba(0, 0, 0, 0.247);
+    border-radius: 5px;
+}
+
+.brand_logo_container {
+    position: absolute;
+    top: -75px;
+    border-radius: 50%;
+    padding: 10px;
+    text-align: center;
+}
+.brand_logo {
+    border-radius: 50%;
+    border: 5px solid $primary;
+}
+.form_container {
+    margin-top: 100px;
+}
+.register_btn {
+    width: 100%;
+}
+.register_btn:focus {
+    box-shadow: none;
+    outline: 0px;
+}
+
+.input-group-text {
+    border: 0;
+    border-radius: 0.25rem 0 0 0.25rem;
+}
+.input_user,
+.input_pass:focus {
+    box-shadow: none;
+    outline: 0px;
+}
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: $primary;
+}

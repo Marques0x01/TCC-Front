@@ -1,11 +1,10 @@
-/* ICONS */
-@import "~material-design-icons/iconfont/material-icons.css";
-
 /* Themes */
+@import "../node_modules/bootstrap/scss/bootstrap";
 @import "./assets/styles/themes.scss";
 @import "./assets/styles/default.scss";
-@import "../node_modules/bootstrap/scss/bootstrap";
 
+/* ICONS */
+@import "~material-design-icons/iconfont/material-icons.css";
 
 // Material Icons
 .material-icons {
@@ -29,7 +28,6 @@
   /* Support for IE. */
   font-feature-settings: "liga";
 }
-
 
 html,
 body {

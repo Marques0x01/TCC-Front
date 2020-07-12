@@ -13,4 +13,4 @@ import { RegisterComponent } from '../components/register/register.component';
 })
 export class AppLayoutModule { }
 
-export const Components = [HomeComponent, HeaderComponent, LoginComponent, RegisterComponent]
+export const Components = [HomeComponent, HeaderComponent, LoginComponent, RegisterComponent, LoginComponent, RegisterComponent]

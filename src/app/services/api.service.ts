@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from '../models/user/user';
+import { User, UserLogin, UserRegister } from '../models/user/user';
 import { environment } from '../../environments/environment.dev';
 import { Router } from '@angular/router';
 
@@ -19,11 +19,11 @@ export class ApiService {
     'Content-Type': 'application/json',
   });
 
-  Register(user: User) {
+  Register(user: UserRegister) {
     return this.http.post(this.baseUrl + '/auth/signup', user);
   }
 
-  Login(user: User) {
+  Login(user: UserLogin) {
     return this.http.post(this.baseUrl + '/auth/signin', user);
   }
 

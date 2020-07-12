@@ -3,21 +3,18 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {
-  RoutingComponents,
-  AppRoutingModule,
-} from './config/app-routing.module';
+import { AppRoutingModule } from './config/app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Interceptor } from './config/interceptor.module';
-import { MatIconModule } from '@angular/material/icon';
 import { Components } from './config/app-layout.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
-  declarations: [AppComponent, RoutingComponents, Components],
+  declarations: [AppComponent, Components],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,10 +23,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgbModule,
     HttpClientModule,
     Interceptor,
-    MatIconModule,
     FontAwesomeModule,
-    MatSidenavModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent],

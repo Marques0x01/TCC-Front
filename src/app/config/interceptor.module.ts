@@ -7,17 +7,23 @@ import {
 } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment.dev';
 
 @Injectable()
 export class HttpsRequestInterceptor implements HttpInterceptor {
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
+  private baseUrl = environment.apiUrl;
+  private allowed: Array<string> = [`${this.baseUrl}/auth/signin`, `${this.baseUrl}/auth/signup`]
+
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let user = JSON.parse(sessionStorage.getItem('user'));
 
-    if(user.token){
+    if (!this.allowed.includes(request.url)) {
+      if (user.token) {
         request = request.clone({
-            setHeaders: { Authorization: `Bearer ${user.token}` },
+          setHeaders: { Authorization: `Bearer ${user.token}` },
         });
+      }
     }
 
     return next.handle(request)
@@ -33,4 +39,4 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
     },
   ],
 })
-export class Interceptor {}
+export class Interceptor { }
