@@ -33,6 +33,6 @@ export class ApiService {
   }
 
   GetAllUsers(){
-    return this.http.get(this.baseUrl + '/users');
+    return this.http.get(this.baseUrl + '/user');
   }
 }

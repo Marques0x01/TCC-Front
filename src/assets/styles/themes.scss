@@ -3,13 +3,21 @@ $primary: rgb(77, 77, 233);
 $secondary: #777777;
 $dark: #202124;
 $light: #ffffff;
+$warning: #fc6c40;
+$light-grey: rgb(228, 228, 228);
+$dark-purple: #20123a;
+$light-purple: #54697e;
 
 // BOOTSTRAP
 $theme-colors: (
   "primary": $primary,
   "light": $light,
   "dark": $dark,
-  "secondary": $secondary
+  "secondary": $secondary,
+  "warning": $warning,
+  "light-grey": $light-grey,
+  "dark-purple": $dark-purple,
+  "light-purple": $light-purple
 );
 
 // BACKGROUNDS HOVERS
@@ -79,6 +87,10 @@ $theme-colors: (
 }
 
 // FONT SIZE
+.f-13 {
+  font-size: 13px
+}
+
 .f-15 {
   font-size: 15px;
 }

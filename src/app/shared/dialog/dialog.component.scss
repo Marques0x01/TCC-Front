@@ -1,0 +1,18 @@
+::ng-deep.mat-dialog-container {
+    padding: 0px !important;
+}
+
+.dialog {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 30% 40% 30%;
+}
+
+.dialog-header {
+}
+
+.dialog-body {
+}
+
+.dialog-bottom {
+}

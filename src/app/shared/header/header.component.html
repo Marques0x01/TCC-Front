@@ -1,5 +1,5 @@
 <nav class="navbar-light bg-light py-2" [ngClass]="pageWidth > 1000 ? 'px-8' : 'px-5'"
-  (window:resize)="onResize($event)">
+  (window:resize)="onResize($event)" *ngIf="showHeader">
   <div class="row">
     <div class="col-8">
       <div class="d-flex align-items-center">
@@ -12,7 +12,7 @@
               <input type="text" class="form-control text-primary input-lg" placeholder="Buscar" />
               <span class="input-group-btn">
                 <button class="btn btn-info btn-lg" type="button">
-                  <i class="material-icons f-25">search</i>
+                  <mat-icon class="material-icons f-25">search</mat-icon>
                 </button>
               </span>
             </div>
@@ -39,10 +39,19 @@
     </div>
     <div class="col-4 d-flex justify-content-end align-items-center">
       <button class="font-weight-bold f-18 pointer d-flex align-items-center btn btn-primary btn-radius"
-        *ngIf="pageWidth > 1000">
-        <i class="material-icons text-light f-25 mr-1 font-weight-bold">account_circle</i>
+        *ngIf="pageWidth > 1000 && !isLogged" [routerLink]="['/login']">
+        <mat-icon class="material-icons text-light f-25 mr-1 font-weight-bold">account_circle</mat-icon>
         <span>Login</span>
       </button>
+      <div ngbDropdown class="d-inline-block" *ngIf="pageWidth > 1000 && isLogged">
+        <button class="btn text-primary" ngbDropdownToggle>Bem vindo, {{user.name}}</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem class="text-primary">Minha conta</button>
+          <button ngbDropdownItem class="text-primary">Configurações</button>
+          <div class="dropdown-divider"></div>
+          <button ngbDropdownItem class="text-primary" (click)="logout()">Sair</button>
+        </div>
+      </div>
       <button class="navbar-toggler text-primary" type="button" (click)="toggleNav()" *ngIf="pageWidth <= 1000"
         #SidenavButton>
         &#9776;
@@ -55,21 +64,35 @@
 <div #Sidenav id="sideNav" class="sidenav bg-light text-primary">
   <div>
     <ul class="list-group">
-      <li class="list-group-item bg-hover-light d-flex align-items-center pointer">
-        <i class="material-icons f-25 mr-1 font-weight-bold">person_outline</i>
+      <li class="list-group-item bg-hover-light d-flex align-items-center pointer" *ngIf="!isLogged">
+        <mat-icon class="material-icons f-25 mr-1 font-weight-bold">person_outline</mat-icon>
         <span> Login </span>
       </li>
+      <li class="list-group-item bg-hover-light d-flex align-items-center pointer" (click)="isCollapsedUser = !isCollapsedUser" *ngIf="isLogged"
+        [attr.aria-expanded]="!isCollapsedUser">
+        <mat-icon class="material-icons f-25 mr-1 font-weight-bold">person_outline</mat-icon>
+        <span>Bem vindo, {{user.name}}</span>
+      </li>
+      <li class="list-group-item d-flex align-items-centerpointer" *ngIf="!isCollapsedUser">
+        <div [ngbCollapse]="isCollapsedUser">
+          <div class="text-primary p-2 ml-4 side-item-category pointer">Minha Conta </div>
+          <div class="text-primary p-2 ml-4 side-item-category pointer">Configurações </div>
+          <div class="text-primary p-2 ml-4 side-item-category pointer">Esportes </div>
+          <div class="text-primary p-2 ml-4 side-item-category pointer" (click)="logout()">Sair</div>
+        </div>
+      </li>
       <li class="list-group-item bg-hover-light d-flex align-items-center pointer">
-        <i class="material-icons f-25 mr-1 font-weight-bold">search</i>
+        <mat-icon class="material-icons f-25 mr-1 font-weight-bold">search</mat-icon>
+
         <span>Buscar</span>
       </li>
-      <li class="list-group-item bg-hover-light d-flex align-items-center pointer" (click)="isCollapsed = !isCollapsed"
-        [attr.aria-expanded]="!isCollapsed">
-        <i class="material-icons f-25 mr-1 font-weight-bold">layers</i>
-        <span>Categorias</span> 
+      <li class="list-group-item bg-hover-light d-flex align-items-center pointer" (click)="isCollapsedCategories = !isCollapsedCategories"
+        [attr.aria-expanded]="!isCollapsedCategories">
+        <mat-icon class="material-icons f-25 mr-1 font-weight-bold">layers</mat-icon>
+        <span>Categorias</span>
       </li>
-      <li class="list-group-item d-flex align-items-centerpointer" *ngIf="!isCollapsed">
-        <div [ngbCollapse]="isCollapsed">
+      <li class="list-group-item d-flex align-items-centerpointer" *ngIf="!isCollapsedCategories">
+        <div [ngbCollapse]="isCollapsedCategories">
           <div class="text-primary p-2 ml-4 side-item-category pointer">Eletronicos </div>
           <div class="text-primary p-2 ml-4 side-item-category pointer">Festas </div>
           <div class="text-primary p-2 ml-4 side-item-category pointer">Esportes </div>

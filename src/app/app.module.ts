@@ -9,9 +9,7 @@ import { Interceptor } from './config/interceptor.module';
 import { Components } from './config/app-layout.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-
+import { MaterialModule } from './config/material-module';
 
 @NgModule({
   declarations: [AppComponent, Components],
@@ -25,8 +23,7 @@ import { MatInputModule } from '@angular/material/input';
     Interceptor,
     FontAwesomeModule,
     BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent],

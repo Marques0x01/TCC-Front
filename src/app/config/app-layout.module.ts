@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from '../views/home/home.component';
 import { HeaderComponent } from '../shared/header/header.component';
 import { LoginComponent } from '../components/login/login.component';
 import { RegisterComponent } from '../components/register/register.component';
+import { HomeComponent } from '@app/components/home/home.component';
+import { DialogComponent } from '@app/shared/dialog/dialog.component';
 
 @NgModule({
   declarations: [],
@@ -13,4 +14,4 @@ import { RegisterComponent } from '../components/register/register.component';
 })
 export class AppLayoutModule { }
 
-export const Components = [HomeComponent, HeaderComponent, LoginComponent, RegisterComponent, LoginComponent, RegisterComponent]
+export const Components = [HomeComponent, HeaderComponent, LoginComponent, RegisterComponent, DialogComponent]

@@ -1,7 +1,7 @@
 @import "~assets/styles/themes.scss";
 
 .user_card {
-    height: 400px;
+    height: 430px;
     width: 350px;
     margin-top: auto;
     margin-bottom: auto;
@@ -25,7 +25,7 @@
 }
 .brand_logo {
     border-radius: 50%;
-    border: 5px solid $primary
+    border: 5px solid $primary;
 }
 .form_container {
     margin-top: 100px;
@@ -37,6 +37,12 @@
     box-shadow: none;
     outline: 0px;
 }
+
+button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
 .login_container {
     padding: 0 2rem;
 }

@@ -14,11 +14,16 @@ export class RegisterComponent implements OnInit {
   public registerForm: FormGroup;
 
   ngOnInit(): void {
+    this.checkLogin();
     this.createRegisterForm();
   }
 
   constructor(private fb: FormBuilder, private userService: ApiService, private router: Router) {
 
+  }
+
+  checkLogin(){
+    sessionStorage.getItem('user');
   }
 
   register() {

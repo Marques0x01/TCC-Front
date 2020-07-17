@@ -1,7 +1,8 @@
 /* Themes */
-@import "../node_modules/bootstrap/scss/bootstrap";
 @import "./assets/styles/themes.scss";
+@import "../node_modules/bootstrap/scss/bootstrap";
 @import "./assets/styles/default.scss";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 /* ICONS */
 @import "~material-design-icons/iconfont/material-icons.css";
@@ -42,3 +43,8 @@ body {
 .pointer {
   cursor: pointer;
 }
+
+*:focus {
+  outline: 0;
+}
+
