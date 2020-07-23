@@ -1,12 +1,23 @@
 // VARIABLES
 $primary: rgb(77, 77, 233);
-$secondary: #777777;
+$secondary: #838181;
 $dark: #202124;
 $light: #ffffff;
 $warning: #fc6c40;
-$light-grey: rgb(228, 228, 228);
-$dark-purple: #20123a;
+
+// CUSTOM
+// GREY
+$light-grey: #f4f4f4;
+$light-grey-100: #e7e7e7;
+$light-grey-200: #d5d5d5;
+$grey: #8b8b8b;
+$dark-grey: #808080;
+
+// PURPLE / BLUE
+$light-blue: rgba(183, 183, 221, 0.822);
 $light-purple: #54697e;
+$dark-purple: #20123a;
+
 
 // BOOTSTRAP
 $theme-colors: (
@@ -17,7 +28,10 @@ $theme-colors: (
   "warning": $warning,
   "light-grey": $light-grey,
   "dark-purple": $dark-purple,
-  "light-purple": $light-purple
+  "light-purple": $light-purple,
+  "grey": $grey,
+  "light-grey-100": $light-grey-100,
+  "dark-grey": $dark-grey
 );
 
 // BACKGROUNDS HOVERS
@@ -87,12 +101,23 @@ $theme-colors: (
 }
 
 // FONT SIZE
+.f-10 {
+  font-size: 10px;
+}
+.f-11 {
+  font-size: 11px;
+}
+.f-12 {
+  font-size: 12px;
+}
 .f-13 {
   font-size: 13px
 }
-
 .f-15 {
   font-size: 15px;
+}
+.f-17 {
+  font-size: 17px;
 }
 .f-18 {
   font-size: 18px;

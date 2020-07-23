@@ -1,115 +1,13 @@
 @import "~assets/styles/themes.scss";
 
-
-.footer {
-    background: #edeff1;
-    border-bottom: 1px solid #cccccc;
-    border-top: 1px solid #dddddd;
-}
-
-.footer h3 {
-    border-bottom: 1px solid #bac1c8;
-    color: #54697e;
-    line-height: 27px;
-    text-transform: uppercase;
-}
-
-.footer ul {
-    list-style-type: none;
-    color: #7f8c8d;
-}
-
-.footer a {
-    color: #78828d;
-}
-
-.supportLi h4 {
-    font-size: 20px;
-    font-weight: lighter;
-    line-height: normal;
-    margin-bottom: 0 !important;
-    padding-bottom: 0;
-}
-
-.newsletter-box .btn {
-    border: medium none;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -o-border-radius: 3px;
-    -ms-border-radius: 3px;
-    border-radius: 3px;
-    display: inline-block;
-    height: 40px;
-    padding: 0;
-    width: 100%;
-    color: #fff;
-}
-.newsletter-box {
-    overflow: hidden;
-}
-
-.social li {
-    background: none repeat scroll 0 0 #b5b5b5;
-    border: 2px solid #b5b5b5;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -o-border-radius: 50%;
-    -ms-border-radius: 50%;
-    border-radius: 50%;
-    float: left;
-    height: 36px;
-    line-height: 36px;
-    margin: 0 8px 0 0;
-    padding: 0;
-    text-align: center;
-    width: 36px;
-    transition: all 0.5s ease 0s;
-    -moz-transition: all 0.5s ease 0s;
-    -webkit-transition: all 0.5s ease 0s;
-    -ms-transition: all 0.5s ease 0s;
-    -o-transition: all 0.5s ease 0s;
-}
-.social li:hover {
-    transform: scale(1.15) rotate(360deg);
-    -webkit-transform: scale(1.1) rotate(360deg);
-    -moz-transform: scale(1.1) rotate(360deg);
-    -ms-transform: scale(1.1) rotate(360deg);
-    -o-transform: scale(1.1) rotate(360deg);
-}
-.social li a {
-    color: #edeff1;
-}
-.social li:hover {
-    border: 2px solid #2c3e50;
-    background: #2c3e50;
-}
-.social li a i {
-    font-size: 16px;
-    margin: 0 0 0 5px;
-    color: #edeff1 !important;
-}
-.footer-bottom {
-    background: #e3e3e3;
-    border-top: 1px solid #dddddd;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    bottom: 0;
-    position: relative;
-    width: 100%;
-}
-.footer-bottom p.pull-left {
-    padding-top: 6px;
-}
-.payments {
-    font-size: 1.5em;
-}
-
 .card {
-    border: none;
-    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    box-shadow: rgba(0, 0, 0, 0.75) 0px 6px 40px -20px;
 }
 
 .card-name {
-    max-height: 50px;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
     overflow: hidden;
+    max-height: 65px;
+    min-height: 65px;
 }

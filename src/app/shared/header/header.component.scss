@@ -19,7 +19,7 @@
   background: none;
   box-shadow: none;
   border: 0;
-  color: rgb(77, 77, 233);
+  color: $primary;
   padding: 0 8px 0 10px;
 }
 
@@ -33,18 +33,18 @@
 
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: rgb(77, 77, 233);
+  color: $primary;
   opacity: 1; /* Firefox */
 }
 
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: rgb(77, 77, 233);
+  color: $primary;
 }
 
 ::-ms-input-placeholder {
   /* Microsoft Edge */
-  color: rgb(77, 77, 233);
+  color: $primary;
 }
 
 .sidenav {

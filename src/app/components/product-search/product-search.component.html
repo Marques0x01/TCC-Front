@@ -1,0 +1,108 @@
+<div class="container py-5 text-light-purple">
+    <div class="row">
+        <div class="col-md-12 col-lg-3">
+            <div class="row">
+                <div class="col-sm-12">
+                    <span class="d-block f-18 font-weight-bold">Headset gamer redragon scylla h901</span>
+                    <span class="d-flex flex-row-reverse f-12">123 resultados</span>
+                </div>
+            </div>
+            <div class="row my-4">
+                <div class="col-sm-12">
+                    <span class="font-weight-bold">Procurar</span>
+                </div>
+                <div class="col-sm-12">
+                    <div class="custom-search-input mt-1">
+                        <div class="input-group input-sm">
+                            <input type="text" class="form-control" placeholder="Ex: TV" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-info btn-lg" type="button">
+                                    <mat-icon class="material-icons f-25">search</mat-icon>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-4">
+                <div class="col-sm-12">
+                    <span class="font-weight-bold">Categorias</span>
+                </div>
+                <div class="col-sm-12 mt-1">
+                    <div class="form-check" *ngFor="let category of categories; index as i;">
+                        <input class="form-check-input" type="checkbox" name="exampleRadios" [id]="category.name"
+                            value="option1">
+                        <label class="form-check-label f-13" [for]="category.name">
+                            {{category.title}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-4">
+                <div class="col-sm-12">
+                    <span class="font-weight-bold">Tipo de alugel</span>
+                </div>
+                <div class="col-sm-12 mt-1">
+                    <div class="form-check" *ngFor="let type of rentTypes; index as i">
+                        <input class="form-check-input" type="checkbox" [id]="type.name" value="option1">
+                        <label class="form-check-label f-13" [for]="type.name">
+                            {{type.title}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-4">
+                <div class="col-sm-12">
+                    <span class="font-weight-bold">Faixa de preço</span>
+                </div>
+                <div class="col-sm-12 mt-2">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Min</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Max</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col-sm-12" style="background-color: red; ">
+                    ESTADO
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12" style="background-color: blue; ">
+                    CIDADE
+                </div>
+            </div> -->
+        </div>
+        <div class="col-md-12 col-lg-9">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row product-card pointer mb-4" *ngFor="let product of products; index as i">
+                        <div class="product-image col-sm-2 d-flex justify-content-center bg-light-grey">
+                            <img [src]="product.image" width="120" height="140" alt="...">
+                        </div>
+                        <div class="product-info col-sm-6 py-md-2 py-sm-4">
+                            <span class="product-name f-15">{{product.name}}</span>
+                            <div class="d-flex align-items-end py-2">
+                                <span class="f-13">Cidade, Bairro</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 pt-md-2 d-flex justify-content-between">
+                            <span> R${{product.price}}</span>
+                            <span class="f-13"> 23/07 18:43</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

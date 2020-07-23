@@ -1,0 +1,69 @@
+@import "~assets/styles/themes.scss";
+
+.custom-search-input {
+  padding: 3px;
+  border: solid 1px $light-purple;
+  border-radius: 6px;
+  background-color: #fff;
+  height: 30px;
+  width: 100%;
+}
+
+.custom-search-input input {
+  border: 0;
+  box-shadow: none;
+  height: 20px;
+}
+
+.custom-search-input button {
+  background: none;
+  box-shadow: none;
+  border: 0;
+  color: $light-purple;
+  padding: 0 8px 0 10px;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: $dark-grey;
+  font-weight: bolder;
+  opacity: 0.5;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: $dark-grey;
+  font-weight: bolder;
+  opacity: 0.5;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: $dark-grey;
+  font-weight: bolder;
+  opacity: 0.5;
+}
+
+.product-name {
+  display: block;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 85px;
+}
+
+.product-card {
+  border: solid 1px $light-grey-100;
+  box-shadow: rgba(0, 0, 0, 0.75) 0px 3px 15px -6px;
+  &:hover {
+    color: $primary;
+    .product-image {
+      background-color: $light-blue !important;
+    }
+  }
+}
+
+.product-info {
+  display: grid;
+  grid-template-columns: 1fr;
+}

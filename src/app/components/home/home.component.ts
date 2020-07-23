@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: "app-home",
@@ -7,6 +8,19 @@ import { Component, OnInit } from "@angular/core";
 })
 export class HomeComponent implements OnInit {
   ngOnInit(): void {
+  }
+
+  
+  constructor(private router: Router){}
+
+  public onSearch() {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        "firstname": "Nic",
+        "lastname": "Raboy"
+      }
+    };
+    this.router.navigate(["/pesquisar"], navigationExtras);
   }
 
   product = [
