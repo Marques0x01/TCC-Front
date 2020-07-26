@@ -11,3 +11,10 @@
     max-height: 65px;
     min-height: 65px;
 }
+
+.card:hover {
+    color: $primary;
+    .card-image {
+        background-color: $light-blue !important;
+    }
+}

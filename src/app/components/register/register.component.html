@@ -9,48 +9,66 @@
             <div class="d-flex justify-content-center form_container">
                 <!-- LOGIN FORM -->
                 <form [formGroup]="registerForm" (submit)="register()">
+                    <!-- NAME -->
+                    <mat-form-field appearance="standard">
+                        <mat-label>Nome</mat-label>
+                        <input matInput type="text" formControlName="name">
+                        <mat-icon mat-icon-button matSuffix>account_circle</mat-icon>
+                        <mat-error *ngIf="utils.hasError(registerForm, 'name', 'required')">Nome obrigatório
+                        </mat-error>
+                        <mat-error *ngIf="utils.hasError(registerForm, 'name', 'emptyString')">Nome Obrigatório
+                        </mat-error>
+                    </mat-form-field>
 
-                    <div class="input-group mb-4">
-                        <div class="input-group-append">
-                            <span class="input-group-text text-white bg-primary"> <i
-                                    class="material-icons text-light f-25 font-weight-bold">account_circle</i>
-                            </span>
-                        </div>
-                        <input type="text" class="form-control input_user" formControlName="name" placeholder="Nome">
-                    </div>
+                    <!-- LASTNAME -->
+                    <mat-form-field appearance="standard">
+                        <mat-label>Sobrenome</mat-label>
+                        <input matInput type="text" formControlName="lastName">
+                        <mat-icon mat-icon-button matSuffix>account_circle</mat-icon>
+                        <mat-error *ngIf="utils.hasError(registerForm, 'lastName', 'required')">Sobrenome obrigatório
+                        </mat-error>
+                        <mat-error *ngIf="utils.hasError(registerForm, 'lastName', 'emptyString')">Sobrenome Obrigatório
+                        </mat-error>
+                    </mat-form-field>
 
                     <!-- EMAIL -->
-                    <div class="input-group mb-4">
-                        <div class="input-group-append">
-                            <span class="input-group-text text-white bg-primary"> <i
-                                    class="material-icons text-light f-25 font-weight-bold">account_circle</i>
-                            </span>
-                        </div>
-                        <input type="text" class="form-control input_user" formControlName="email" placeholder="Email">
-                    </div>
+                    <mat-form-field appearance="standard">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" formControlName="email">
+                        <mat-icon mat-icon-button matSuffix>email</mat-icon>
+                        <mat-error *ngIf="utils.hasError(registerForm, 'email', 'required')">Email obrigatório
+                        </mat-error>
+                        <mat-error *ngIf="utils.hasError(registerForm, 'email', 'email')">Necessário que seja um email
+                            valido</mat-error>
+                    </mat-form-field>
 
                     <!-- PASSWORD -->
-                    <div class="input-group mb-4">
-                        <div class="input-group-append">
-                            <span class="input-group-text text-white bg-primary"> <i
-                                    class="material-icons text-light f-25 font-weight-bold">security</i>
-                            </span>
-                        </div>
-                        <input type="password" class="form-control input_pass" formControlName="password"
-                            placeholder="Senha">
-                    </div>
-
-                    <div class="input-group mb-4">
-                        <div class="input-group-append">
-                            <span class="input-group-text text-white bg-primary"> <i
-                                    class="material-icons text-light f-25 font-weight-bold">security</i>
-                            </span>
-                        </div>
-                        <input type="password" class="form-control input_pass" formControlName="passwordConfirmation"
-                            placeholder="Confirmação de Senha">
+                    <mat-form-field appearance="standard">
+                        <mat-label>Senha</mat-label>
+                        <input minlength="8" matInput type="password" formControlName="password">
+                        <mat-icon mat-icon-button matSuffix>security</mat-icon>
+                        <mat-error *ngIf="utils.hasError(registerForm, 'password', 'required')">Senha obrigatória
+                        </mat-error>
+                        <mat-error *ngIf="utils.hasError(registerForm, 'password', 'minlength')">Senha precisar no minimo 8 digitos
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="standard">
+                        <mat-label>Confirmação de Senha</mat-label>
+                        <input matInput type="password" formControlName="passwordConfirmation">
+                        <mat-icon mat-icon-button matSuffix>security</mat-icon>
+                        <mat-error *ngIf="utils.hasError(registerForm, 'passwordConfirmation', 'notEquivalent')">
+                            Passwords do not match
+                        </mat-error>
+                        <mat-error *ngIf="utils.hasError(registerForm, 'passwordConfirmation', 'required')">Confirmação de senha obrigatória
+                        </mat-error>
+                    </mat-form-field>
+                    <div class="d-flex justify-content-center" *ngIf="failedToRegister">
+                        <span class="f-13 text-warning">Email já cadastrado</span>
                     </div>
                     <div class="d-flex justify-content-center mt-3">
-                        <button type="submit" class="btn register_btn btn-primary">Register</button>
+                        <button type="submit" class="btn register_btn btn-primary"
+                            [disabled]="!utils.isFormValid(registerForm)"
+                            [class.disabled]="!utils.isFormValid(registerForm)">Register</button>
                     </div>
                 </form>
             </div>

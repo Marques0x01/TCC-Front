@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { ApiService } from '@app/services/api.service';
 import { UserRegister } from '@app/models/user/user';
 import { Router } from '@angular/router';
+import { Utils } from '@app/utils/utils';
+import { FormsValidator } from '@app/utils/forms-validator';
+import { ErrorStateMatcher } from '@angular/material/core';
 
 @Component({
   selector: 'app-register',
@@ -12,6 +15,8 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   public registerForm: FormGroup;
+  public utils: Utils = new Utils();
+  public failedToRegister: boolean = false;
 
   ngOnInit(): void {
     this.checkLogin();
@@ -22,30 +27,47 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  checkLogin(){
+  checkLogin() {
     sessionStorage.getItem('user');
   }
 
   register() {
+    this.failedToRegister = false;
     let forms = this.registerForm.value;
     let user: UserRegister = {
       name: forms.name,
+      lastName: forms.lastName,
       email: forms.email,
       password: forms.password
     }
-
     this.userService.Register(user).subscribe(response => {
       this.router.navigate(["login"]);
+    }, error => {
+      this.failedToRegister = true;
+      this.utils.resetForm(this.registerForm);
     })
   }
 
   createRegisterForm() {
     this.registerForm = this.fb.group({
-      "name": [''],
-      "email": [''],
-      "password": [''],
-      "passwordConfirmation": ['']
-    })
+      name: ['', [Validators.required, FormsValidator.emptyString]],
+      lastName: ['', [Validators.required, FormsValidator.emptyString]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      passwordConfirmation: ['', [Validators.required]]
+    }, { validator: this.checkIfMatchingPasswords('password', 'passwordConfirmation') })
   }
 
+  checkIfMatchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
+    return (group: FormGroup) => {
+      let passwordInput = group.controls[passwordKey],
+        passwordConfirmationInput = group.controls[passwordConfirmationKey];
+      if (passwordInput.value !== passwordConfirmationInput.value) {
+        return passwordConfirmationInput.setErrors({ notEquivalent: true })
+      }
+      else {
+        return passwordConfirmationInput.setErrors(null);
+      }
+    }
+  }
 }

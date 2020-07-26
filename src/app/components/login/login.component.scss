@@ -1,15 +1,15 @@
 @import "~assets/styles/themes.scss";
 
 .user_card {
-    height: 430px;
-    width: 350px;
+    height: 400px;
+    width: 450px;
     margin-top: auto;
     margin-bottom: auto;
     position: relative;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 10px;
+    padding: 30px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.205), 0 6px 20px 0 rgba(0, 0, 0, 0.247);
     -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.205), 0 6px 20px 0 rgba(0, 0, 0, 0.247);
     -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.205), 0 6px 20px 0 rgba(0, 0, 0, 0.247);
@@ -28,7 +28,7 @@
     border: 5px solid $primary;
 }
 .form_container {
-    margin-top: 100px;
+    margin-top: 50px;
 }
 .login_btn {
     width: 100%;

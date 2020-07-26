@@ -11,41 +11,38 @@
             </div>
             <div class="d-flex justify-content-center form_container">
                 <!-- LOGIN FORM -->
-                <form [formGroup]="loginForm" (submit)="login()">
+                <form [formGroup]="loginForm" (submit)="login()" (keyup.enter)="login()">
                     <!-- EMAIL -->
-                    <div class="input-group mb-4">
-                        <div class="input-group-append">
-                            <span class="input-group-text text-white bg-primary"> <i
-                                    class="material-icons text-light f-25 font-weight-bold">account_circle</i>
-                            </span>
-                        </div>
-                        <input type="text" class="form-control input_user" formControlName="email" placeholder="Email">
-                    </div>
+                    <mat-form-field appearance="standard">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email">
+                        <mat-icon matSuffix>email</mat-icon>
+                        <mat-error *ngIf="utils.hasError(loginForm, 'email', 'required')">E-mail é obrigatório
+                        </mat-error>
+                        <mat-error *ngIf="utils.hasError(loginForm, 'email', 'email')">Necessário que seja preenchido um
+                            e-mail</mat-error>
+                    </mat-form-field>
 
                     <!-- PASSWORD -->
-                    <div class="input-group mb-4">
-                        <div class="input-group-append">
-                            <span class="input-group-text text-white bg-primary"> <i
-                                    class="material-icons text-light f-25 font-weight-bold">security</i>
-                            </span>
-                        </div>
-                        <input type="password" class="form-control input_pass" formControlName="password"
-                            placeholder="Senha">
-                    </div>
-                    <div class="form-group mb-4">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customControlInline">
-                            <label class="custom-control-label" for="customControlInline">Mantenha-me
-                                Conectado</label>
-                        </div>
+                    <mat-form-field appearance="standard">
+                        <mat-label>Senha</mat-label>
+                        <input matInput type="password" formControlName="password">
+                        <mat-icon mat-icon-button matSuffix>security</mat-icon>
+                        <mat-error *ngIf="utils.hasError(loginForm, 'password', 'required')">Senha é obrigatória
+                        </mat-error>
+                    </mat-form-field>
+
+                    <div class="d-flex justify-content-center" *ngIf="failedToLogin">
+                        <span class="f-13 text-warning">Email ou senha está incorreto</span>
                     </div>
                     <div class="d-flex justify-content-center mt-3 login_container">
-                        <button type="submit" class="btn login_btn btn-primary">Login</button>
+                        <button type="submit" class="btn login_btn btn-primary" [disabled]="!utils.isFormValid(loginForm)"
+                            [class.disabled]="!utils.isFormValid(loginForm)">Login</button>
                     </div>
                 </form>
             </div>
 
-            <div class="mt-4">
+            <div class="mt-4 f-13">
                 <div class="d-flex justify-content-center links">
                     Não tem uma conta? <a [routerLink]="['/registrar']" class="ml-2">Resgistre-se!</a>
                 </div>
