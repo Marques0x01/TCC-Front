@@ -12,10 +12,10 @@ export class Utils {
         }
     }
 
-    public resetForm(form: FormGroup): void{
+    public resetForm(form: FormGroup): void {
         form.reset()
         Object.keys(form.controls).forEach(key => {
-          form.get(key).setErrors(null) ;
+            form.get(key).setErrors(null);
         });
         form.markAsUntouched();
     }

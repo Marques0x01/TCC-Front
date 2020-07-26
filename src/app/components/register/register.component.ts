@@ -44,7 +44,9 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(["login"]);
     }, error => {
       this.failedToRegister = true;
-      this.utils.resetForm(this.registerForm);
+      this.registerForm.get('email').setValue('');
+      this.registerForm.get('email').setErrors({wrongData: true});
+      this.registerForm.get('email').setErrors({required: false});
     })
   }
 

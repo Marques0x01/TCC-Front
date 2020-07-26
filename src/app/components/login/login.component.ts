@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { FormsValidator } from '@app/utils/forms-validator';
 import { Utils } from '@app/utils/utils';
 import { ThrowStmt } from '@angular/compiler';
+import { DialogComponent } from '@app/shared/dialog/dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -39,10 +40,10 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/']);
       }, error => {
         this.failedToLogin = true;
-        this.utils.resetForm(this.loginForm);
+        this.loginForm.get('password').setValue('');
+        this.loginForm.get('password').setErrors({wrongData: true});
+        this.loginForm.get('password').setErrors({required: false});
       })
     }
   }
-
-
 }

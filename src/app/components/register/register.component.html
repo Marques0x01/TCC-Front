@@ -67,8 +67,8 @@
                     </div>
                     <div class="d-flex justify-content-center mt-3">
                         <button type="submit" class="btn register_btn btn-primary"
-                            [disabled]="!utils.isFormValid(registerForm)"
-                            [class.disabled]="!utils.isFormValid(registerForm)">Register</button>
+                            [disabled]="!registerForm.valid"
+                            [class.disabled]="!registerForm.valid">Register</button>
                     </div>
                 </form>
             </div>

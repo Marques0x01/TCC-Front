@@ -33,11 +33,12 @@
                     </mat-form-field>
 
                     <div class="d-flex justify-content-center" *ngIf="failedToLogin">
-                        <span class="f-13 text-warning">Email ou senha está incorreto</span>
+                        <span class="f-13 text-warning">Email/Senha incorreto(a)</span>
                     </div>
                     <div class="d-flex justify-content-center mt-3 login_container">
-                        <button type="submit" class="btn login_btn btn-primary" [disabled]="!utils.isFormValid(loginForm)"
-                            [class.disabled]="!utils.isFormValid(loginForm)">Login</button>
+                        <button type="submit" class="btn login_btn btn-primary"
+                            [disabled]="!loginForm.valid"
+                            [class.disabled]="!loginForm.valid">Login</button>
                     </div>
                 </form>
             </div>

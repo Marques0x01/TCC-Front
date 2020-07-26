@@ -6,11 +6,27 @@ import { Router } from '@angular/router';
 @Injectable({
     providedIn: 'root',
 })
-export class Dialog {
+export class DialogModals {
 
     constructor(private dialog: MatDialog, private router: Router) { }
 
-    loginError() {
+    error(message: string): void {
+        const dialogRef = this.dialog.open(DialogComponent, {
+            data: {
+                icon: "warning",
+                message: message,
+                confirmationText: "Ok",
+                title: "Atenção",
+                type: "warning",
+                showCancel: false
+            }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+        });
+    }
+
+    loginError(): void {
         const dialogRef = this.dialog.open(DialogComponent, {
             data: {
                 icon: "warning",
@@ -22,9 +38,10 @@ export class Dialog {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            if(result){
+            if (result) {
                 this.router.navigateByUrl("login");
             }
         });
     }
+
 }
