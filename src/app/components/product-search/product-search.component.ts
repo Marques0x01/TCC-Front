@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CategoriesModel } from '@app/models/caregories.model';
+import { RentTypeModel } from '@app/models/rentType.model';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-product-search',
@@ -8,23 +11,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductSearchComponent implements OnInit {
 
-  public categories: Array<Object> = [
-    { name:"eletronic", title: "Eletrônico" },
-    { name:"party", title: "Festa" },
-    { name:"sports", title: "Esporte" },
-    { name:"books", title: "Livro" },
-    { name:"music", title: "Musica" },
-    { name:"furniture", title: "Mobílias" },
-    { name:"cloths", title: "Roupa" },
-    { name:"others", title: "Outros" }
-  ]
-
-  public rentTypes: Array<Object> = [
-    { name:"daily", title: "Diario" },
-    { name:"weekly", title: "Semanalmente" },
-    { name:"monthly", title: "Mensalmente" },
-    { name:"moreThanOneMonth", title: "Mais de um mês" }
-  ]
+  public categories: Array<Object> = CategoriesModel.categories;
+  public rentTypes: Array<Object> = RentTypeModel.rentTypes;
+  public textSearched: string;
+  public searchForm: FormGroup;
 
   public products = [
     {
@@ -69,18 +59,28 @@ export class ProductSearchComponent implements OnInit {
     }
   ]
 
-  public constructor(private route: ActivatedRoute) {
+  public constructor(private route: ActivatedRoute, private fb: FormBuilder) {
     this.route.queryParams.subscribe(params => {
-        console.log(params);
+      this.textSearched = params.textSearched;
     });
-}
-
-  ngOnInit(): void {
-    
   }
 
-  public createSearchForms(){
-    
+  ngOnInit(): void {
+    this.createSearchForm();
+  }
+
+  public createSearchForm(): void {
+    this.searchForm = this.fb.group({
+      search: [""],
+      categories: [],
+      rentTypes: [],
+      minPrice: [""],
+      maxPrice: [""]
+    })
+  }
+
+  public onSearch(): void {
+
   }
 
 }

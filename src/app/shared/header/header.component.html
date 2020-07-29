@@ -22,15 +22,7 @@
               <button class="btn btn-outline-primary btn-sm" id="dropdown-category"
                 ngbDropdownToggle>Categorias</button>
               <div ngbDropdownMenu aria-labelledby="dropdown-category">
-                <button ngbDropdownItem class="text-primary">Eletricos</button>
-                <button ngbDropdownItem class="text-primary">Festas</button>
-                <button ngbDropdownItem class="text-primary">Esportes</button>
-                <button ngbDropdownItem class="text-primary">Livros</button>
-                <button ngbDropdownItem class="text-primary">Musica</button>
-                <button ngbDropdownItem class="text-primary">Mobilias</button>
-                <button ngbDropdownItem class="text-primary">Roupas</button>
-                <div class="dropdown-divider"></div>
-                <button ngbDropdownItem class="text-primary">Outros</button>
+                <button ngbDropdownItem class="text-primary f-13" *ngFor="let category of categories; indes as i">{{category.title}}</button>
               </div>
             </div>
           </div>
@@ -47,7 +39,7 @@
       <div ngbDropdown class="d-inline-block" *ngIf="pageWidth > 1000 && isLogged">
         <button class="btn text-primary" ngbDropdownToggle>Bem vindo, {{user.name}}</button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button ngbDropdownItem class="text-primary">Minha conta</button>
+          <button ngbDropdownItem class="text-primary" [routerLink]="['/account']">Minha conta</button>
           <button ngbDropdownItem class="text-primary">Configurações</button>
           <div class="dropdown-divider"></div>
           <button ngbDropdownItem class="text-primary" (click)="logout()">Sair</button>
@@ -65,6 +57,10 @@
 <div #Sidenav id="sideNav" class="sidenav bg-light text-primary">
   <div>
     <ul class="list-group">
+      <li class="list-group-item bg-hover-light d-flex align-items-center pointer" *ngIf="!isLogged">
+        <img src="../assets/icons/icon.png" width="55" height="55" alt="logo" class="logo pointer" />
+        <div class="f-17 mr-4 text-primary font-weight-bold pointer">CONCLUSÃO</div>
+      </li>
       <li class="list-group-item bg-hover-light d-flex align-items-center pointer" *ngIf="!isLogged">
         <mat-icon class="material-icons f-25 mr-1 font-weight-bold">person_outline</mat-icon>
         <span> Login </span>
@@ -94,14 +90,7 @@
       </li>
       <li class="list-group-item d-flex align-items-centerpointer" *ngIf="!isCollapsedCategories">
         <div [ngbCollapse]="isCollapsedCategories">
-          <div class="text-primary p-2 ml-4 side-item-category pointer">Eletronicos </div>
-          <div class="text-primary p-2 ml-4 side-item-category pointer">Festas </div>
-          <div class="text-primary p-2 ml-4 side-item-category pointer">Esportes </div>
-          <div class="text-primary p-2 ml-4 side-item-category pointer">Livros </div>
-          <div class="text-primary p-2 ml-4 side-item-category pointer">Musica </div>
-          <div class="text-primary p-2 ml-4 side-item-category pointer">Mobilias </div>
-          <div class="text-primary p-2 ml-4 side-item-category pointer">Roupas </div>
-          <div class="text-primary p-2 ml-4 side-item-category pointer">Outros </div>
+          <div class="text-primary p-2 ml-4 side-item-category pointer" *ngFor="let category of categories; indes as i">{{category.title}}</div>
         </div>
       </li>
     </ul>

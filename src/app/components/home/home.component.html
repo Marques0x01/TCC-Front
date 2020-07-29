@@ -5,63 +5,57 @@
     </div>
     <div class="container">
         <div class="rounded shadow bg-light">
-            <div class="row d-flex justify-content-center align-items-center pt-3 px-5">
+            <div class="row d-flex justify-content-center align-items-center py-3 px-4">
                 <div class="col-sm-12">
                     <div class="input-group input-group-lg">
-                        <input type="text" class="form-control" aria-label="Large"
-                            aria-describedby="inputGroup-sizing-sm">
+                        <input type="text" class="form-control border-primary text-primary" aria-label="Large"
+                            aria-describedby="inputGroup-sizing-sm" placeholder="Nos diga o que está procurando"
+                            [(ngModel)]="search" (keyup.enter)="onSearch()">
+                        <div class="input-group-append pointer" (click)="onSearch()">
+                            <span class="input-group-text bg-light border-primary" id="basic-addon2">
+                                <mat-icon class="material-icons f-25 text-primary">search</mat-icon>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row d-flex justify-content-center align-items-center pt-3 px-4">
+            <!-- <div class="row d-flex pt-3 px-4">
                 <div class="col-lg-2 col-md-12">
-                    <div class="form-group ">
-                        <select id="inputState " class="form-control">
-                            <option selected>Estado</option>
-                            <option>BMW</option>
-                            <option>Audi</option>
-                            <option>Maruti</option>
-                            <option>Tesla</option>
-                        </select>
+                    <div ngbDropdown class="d-inline-block mb-3">
+                        <button class="btn btn-outline-grey f-14" id="dropdownBasic1" ngbDropdownToggle>Categorias</button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                            <button ngbDropdownItem class="" *ngFor="let category of categories; index as i">{{category.title}}</button>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-12">
-                    <div class="form-group">
-                        <select id="inputState" class="form-control">
-                            <option selected>Cidade</option>
-                            <option>BMW</option>
-                            <option>Audi</option>
-                            <option>Maruti</option>
-                            <option>Tesla</option>
-                        </select>
+                    <div ngbDropdown class="d-inline-block mb-3">
+                        <button class="btn btn-outline-grey f-14" id="dropdownBasic1" ngbDropdownToggle>Tipo Aluguel</button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                            <button ngbDropdownItem class="" *ngFor="let type of rentTypes; index as i">{{type.title}}</button>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-12">
-                    <div class="form-group">
-                        <select id="inputState" class="form-control">
-                            <option selected>Categoria</option>
-                            <option>BMW</option>
-                            <option>Audi</option>
-                            <option>Maruti</option>
-                            <option>Tesla</option>
-                        </select>
+                    <div ngbDropdown class="d-inline-block mb-3">
+                        <button class="btn btn-outline-grey f-14" id="dropdownBasic1" ngbDropdownToggle>Estado</button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                            <button ngbDropdownItem class="" *ngFor="let category of categories; index as i">{{category.title}}</button>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-12">
-                    <div class="form-group">
-                        <select id="inputState" class="form-control">
-                            <option selected>Faixa de Preço</option>
-                            <option>BMW</option>
-                            <option>Audi</option>
-                            <option>Maruti</option>
-                            <option>Tesla</option>
-                        </select>
+                    <div ngbDropdown class="d-inline-block mb-3">
+                        <button class="btn btn-outline-grey f-14" id="dropdownBasic1" ngbDropdownToggle>Cidade</button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                            <button ngbDropdownItem class="" *ngFor="let category of categories; index as i">{{category.title}}</button>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-12 mb-3 d-flex justify-content-center">
+                <div class="col-lg-2 col-md-12 mb-3 d-flex">
                     <button type="button" class="btn btn-primary" (click)="onSearch()">Pesquisar</button>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
@@ -110,4 +104,3 @@
         </p>
     </div>
 </div>
-

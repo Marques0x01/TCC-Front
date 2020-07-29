@@ -1,26 +1,7 @@
 @import "~assets/styles/themes.scss";
 
-.custom-search-input {
-  padding: 3px;
-  border: solid 1px $light-purple;
-  border-radius: 6px;
-  background-color: #fff;
-  height: 30px;
-  width: 100%;
-}
-
-.custom-search-input input {
-  border: 0;
-  box-shadow: none;
-  height: 20px;
-}
-
-.custom-search-input button {
-  background: none;
-  box-shadow: none;
-  border: 0;
-  color: $light-purple;
-  padding: 0 8px 0 10px;
+.input-size {
+  height: 25px !important;
 }
 
 ::placeholder {

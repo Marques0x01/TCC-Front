@@ -10,10 +10,9 @@ import { Components } from './config/app-layout.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './config/material-module';
-import { ProductSearchComponent } from './components/product-search/product-search.component';
 
 @NgModule({
-  declarations: [AppComponent, Components, ProductSearchComponent],
+  declarations: [AppComponent, Components],
   imports: [
     BrowserModule,
     AppRoutingModule,

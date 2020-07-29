@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, NavigationExtras } from '@angular/router';
+import { CategoriesModel } from '@app/models/caregories.model';
+import { RentTypeModel } from '@app/models/rentType.model';
 
 @Component({
   selector: "app-home",
@@ -7,17 +9,24 @@ import { Router, NavigationExtras } from '@angular/router';
   styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
+
+  public categories: Array<Object> = CategoriesModel.categories;
+  public rentTypes: Array<Object> = RentTypeModel.rentTypes;
+  public search: string;
+
+
   ngOnInit(): void {
   }
-
   
   constructor(private router: Router){}
 
-  public onSearch() {
+  public onSearch(): void {
+    if(!this.search || this.search == ""){
+      return null;
+    }
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        "firstname": "Nic",
-        "lastname": "Raboy"
+        textSearched: this.search
       }
     };
     this.router.navigate(["/pesquisar"], navigationExtras);

@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild, Renderer2 } from '@angular/co
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Router, NavigationStart } from '@angular/router';
 import { User } from '@app/models/user/user';
+import { CategoriesModel } from '@app/models/caregories.model';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,7 @@ export class HeaderComponent implements OnInit {
   public showHeader: boolean = false;
   public user: User;
   private isSidebarOpen: boolean = false;
+  public categories: Array<Object> = CategoriesModel.categories;
 
   public isCollapsedCategories: boolean = true;
   public isCollapsedUser: boolean = true;
@@ -54,7 +56,6 @@ export class HeaderComponent implements OnInit {
     this.pageWidth = e.target.innerWidth;
     if (this.pageWidth > 1000) {
       document.getElementById("sideNav").style.width = "0";
-      document.body.style.backgroundColor = "white";
     }
   }
 
@@ -68,13 +69,14 @@ export class HeaderComponent implements OnInit {
 
   openNav() {
     document.getElementById("sideNav").style.width = "300px";
-    document.body.style.backgroundColor = "rgba(0,0,0,0.2)";
+    document.getElementById("sideNav").classList.add("border");
     this.isSidebarOpen = true;
   }
 
   closeNav() {
     document.getElementById("sideNav").style.width = "0";
     document.body.style.backgroundColor = "white";
+    document.getElementById("sideNav").classList.remove("border");
     this.isSidebarOpen = false;
   }
 

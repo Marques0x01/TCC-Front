@@ -1,78 +1,74 @@
 <div class="container py-5 text-light-purple">
     <div class="row">
         <div class="col-md-12 col-lg-3">
-            <div class="row">
-                <div class="col-sm-12">
-                    <span class="d-block f-18 font-weight-bold">Headset gamer redragon scylla h901</span>
-                    <span class="d-flex flex-row-reverse f-12">123 resultados</span>
+            <form [formGroup]="searchForm">
+                <div class="row" *ngIf="textSearched">
+                    <div class="col-sm-12">
+                        <span class="d-block f-18 font-weight-bold">{{textSearched}}</span>
+                        <span class="d-flex flex-row-reverse f-12">123 resultados</span>
+                    </div>
                 </div>
-            </div>
-            <div class="row my-4">
-                <div class="col-sm-12">
-                    <span class="font-weight-bold">Procurar</span>
-                </div>
-                <div class="col-sm-12">
-                    <div class="custom-search-input mt-1">
-                        <div class="input-group input-sm">
-                            <input type="text" class="form-control" placeholder="Ex: TV" />
-                            <span class="input-group-btn">
-                                <button class="btn btn-info btn-lg" type="button">
-                                    <mat-icon class="material-icons f-25">search</mat-icon>
-                                </button>
-                            </span>
+                <div class="row my-4">
+                    <div class="col-sm-12">
+                        <span class="font-weight-bold">Procurar</span>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="input-group">
+                            <input type="text" class="form-control border-light-purple text-light-purple input-size">
+                            <div class="input-group-append pointe input-size pointer">
+                                <span class="input-group-text bg-light border-light-purple" id="basic-addon2">
+                                    <mat-icon class="material-icons f-25 text-light-purple">search</mat-icon>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row my-4">
-                <div class="col-sm-12">
-                    <span class="font-weight-bold">Categorias</span>
-                </div>
-                <div class="col-sm-12 mt-1">
-                    <div class="form-check" *ngFor="let category of categories; index as i;">
-                        <input class="form-check-input" type="checkbox" name="exampleRadios" [id]="category.name"
-                            value="option1">
-                        <label class="form-check-label f-13" [for]="category.name">
-                            {{category.title}}
-                        </label>
+                <div class="row my-4">
+                    <div class="col-sm-12">
+                        <span class="font-weight-bold">Categorias</span>
                     </div>
-                </div>
-            </div>
-            <div class="row my-4">
-                <div class="col-sm-12">
-                    <span class="font-weight-bold">Tipo de alugel</span>
-                </div>
-                <div class="col-sm-12 mt-1">
-                    <div class="form-check" *ngFor="let type of rentTypes; index as i">
-                        <input class="form-check-input" type="checkbox" [id]="type.name" value="option1">
-                        <label class="form-check-label f-13" [for]="type.name">
-                            {{type.title}}
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="row my-4">
-                <div class="col-sm-12">
-                    <span class="font-weight-bold">Faixa de preço</span>
-                </div>
-                <div class="col-sm-12 mt-2">
-                    <div class="input-group input-group-sm mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Min</span>
+                    <div class="col-sm-12 mt-1">
+                        <div class="form-check" *ngFor="let category of categories; index as i;">
+                            <input class="form-check-input" type="checkbox" [id]="category.name" [value]="category.name"
+                                formControlName="categories">
+                            <label class="form-check-label f-13" [for]="category.name">
+                                {{category.title}}
+                            </label>
                         </div>
-                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
                     </div>
                 </div>
-                <div class="col-sm-12">
-                    <div class="input-group input-group-sm mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Max</span>
+                <div class="row my-4">
+                    <div class="col-sm-12">
+                        <span class="font-weight-bold">Tipo de alugel</span>
+                    </div>
+                    <div class="col-sm-12 mt-1">
+                        <div class="form-check" *ngFor="let type of rentTypes; index as i">
+                            <input class="form-check-input" type="checkbox" [id]="type.name" [value]="type.name"
+                                formControlName="rentTypes">
+                            <label class="form-check-label f-13" [for]="type.name">
+                                {{type.title}}
+                            </label>
                         </div>
-                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
                     </div>
                 </div>
-            </div>
-            <!-- <div class="row">
+                <div class="row my-4">
+                    <div class="col-sm-12">
+                        <span class="font-weight-bold">Faixa de preço</span>
+                    </div>
+                    <div class="col-sm-6 mt-2">
+                        <mat-form-field appearance="standard">
+                            <mat-label>Min</mat-label>
+                            <input matInput type="number" pattern="\d*" formControlName="minPrice">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-6 mt-2">
+                        <mat-form-field appearance="standard">
+                            <mat-label>Max</mat-label>
+                            <input matInput type="number" pattern="\d*" formControlName="maxPrice">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <!-- <div class="row">
                 <div class="col-sm-12" style="background-color: red; ">
                     ESTADO
                 </div>
@@ -82,6 +78,7 @@
                     CIDADE
                 </div>
             </div> -->
+            </form>
         </div>
         <div class="col-md-12 col-lg-9">
             <div class="row">

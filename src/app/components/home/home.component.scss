@@ -18,3 +18,9 @@
         background-color: $light-blue !important;
     }
 }
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $primary;
+    opacity: 0.5;
+}

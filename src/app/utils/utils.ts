@@ -23,5 +23,4 @@ export class Utils {
     public isFormValid(form: FormGroup): boolean {
         return form.valid && form.touched;
     }
-
 }
