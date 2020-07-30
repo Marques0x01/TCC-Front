@@ -1,9 +1,5 @@
 @import "~assets/styles/themes.scss";
 
-.card {
-    box-shadow: rgba(0, 0, 0, 0.75) 0px 6px 40px -20px;
-}
-
 .card-name {
     text-overflow: ellipsis;
     word-wrap: break-word;
@@ -20,7 +16,6 @@
 }
 
 ::placeholder {
-    /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: $primary;
     opacity: 0.5;
 }

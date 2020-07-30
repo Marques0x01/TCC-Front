@@ -35,7 +35,6 @@
 
 .product-card {
   border: solid 1px $light-grey-100;
-  box-shadow: rgba(0, 0, 0, 0.75) 0px 3px 15px -6px;
   &:hover {
     color: $primary;
     .product-image {

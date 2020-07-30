@@ -1,1 +1,257 @@
-<p>account works!</p>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-12 col-lg-3">
+            <div class="row">
+                <div class="col-sm-6 col-lg-12 mb-3" (click)="isConfig = false">
+                    <button class="btn btn-outline-primary border-0 py-2 f-18 border-radius-30"
+                        [class.active]="!isConfig">Meus
+                        Dados</button>
+                </div>
+                <div class="col-sm-6 col-lg-12 mb-3" (click)="isConfig = true">
+                    <button class="btn btn-outline-primary border-0 py-2 f-18 border-radius-30"
+                        [class.active]="isConfig">Configurações</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-7 p-4 box-shadow-light-grey-100" *ngIf="!isConfig">
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <div class="d-block">
+                        <span class="h4 font-weight-light">Meus Dados</span>
+                    </div>
+                    <div class="d-block">
+                        <span class="f-12 text-secondary">Altere seus dados</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-sm-12">
+                    <form>
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-6">
+                                <mat-form-field appearance="standard">
+                                    <mat-label>Nome</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-sm-12 col-lg-6">
+                                <mat-form-field appearance="standard">
+                                    <mat-label>Sobrenome</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-6">
+                                <mat-form-field appearance="standard">
+                                    <mat-label>CPF</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-sm-12 col-lg-6">
+                                <mat-form-field appearance="standard">
+                                    <mat-label>Telefone</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <mat-form-field appearance="standard">
+                                    <mat-label>Email</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-sm-12">
+                                <span class="f-17">Gênero</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" name="gender" type="radio" id="gender-male" value="male">
+                                    <label class="form-check-label pl-2" for="gender-male">
+                                        Masculino
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" name="gender" type="radio" id="gender-female" value="female">
+                                    <label class="form-check-label pl-2" for="gender-female">
+                                        Feminino
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" name="gender" type="radio" id="gender-other" value="other">
+                                    <label class="form-check-label pl-2" for="gender-other">
+                                        Não informar
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <div class="d-block">
+                        <span class="h4 font-weight-light">Endereço</span>
+                    </div>
+                    <div class="d-block">
+                        <span class="f-12 text-secondary">Altere seu endereço</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <form>
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-6">
+                                <mat-form-field appearance="standard">
+                                    <mat-label>CEP</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-sm-12 col-lg-6">
+                                <mat-form-field appearance="standard">
+                                    <mat-label>Bairro</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <mat-form-field appearance="standard">
+                                    <mat-label>Endereço</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-4">
+                                <mat-form-field appearance="standard">
+                                    <mat-label>Numero</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-sm-12 col-lg-8">
+                                <mat-form-field appearance="standard">
+                                    <mat-label>Complemento</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-6">
+                                <mat-form-field appearance="standard">
+                                    <mat-label>Cidade</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-sm-12 col-lg-6">
+                                <mat-form-field appearance="standard">
+                                    <mat-label>Estado</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-primary border-radius-30 px-4">
+                            Salvar Alterações
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-7 p-4 box-shadow-light-grey-100" *ngIf="isConfig">
+            <div class="row mb-lg-4">
+                <div class="col-sm-12">
+                    <div class="d-block">
+                        <span class="h4 font-weight-light">Segurança</span>
+                    </div>
+                    <div class="d-block">
+                        <span class="f-12 text-secondary">Deixa sua conta sempre segura</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <span class="f-15 font-weight-bold">Trocar de E-mail</span>
+                </div>
+            </div>
+            <form>
+                <div class="row">
+                    <div class="col-sm-12 col-lg-6">
+                        <mat-form-field appearance="standard">
+                            <mat-label>Novo E-mail</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-12 col-lg-6">
+                        <mat-form-field appearance="standard">
+                            <mat-label>Confirmação o E-mail</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-primary border-radius-30 px-4">
+                                Trocar E-mail
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-sm-12">
+                    <span class="f-15 font-weight-bold">Trocar Senha</span>
+                </div>
+            </div>
+            <form>
+                <div class="row">
+                    <div class="col-sm-12 col-lg-6">
+                        <mat-form-field appearance="standard">
+                            <mat-label>Senha Antiga</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-12 col-lg-6">
+                        <mat-form-field appearance="standard">
+                            <mat-label>Nova Senha</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row d-flex flex-row-reverse">
+                    <div class="col-sm-6">
+                        <mat-form-field appearance="standard">
+                            <mat-label>Confirmação de Senha</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-primary border-radius-30 px-4">
+                                Trocar Senha
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
