@@ -1,0 +1,100 @@
+<div class="register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+            <h3>Você está quase lá!</h3>
+            <p>You are 30 seconds away from earning your own money!</p>
+        </div>
+        <div class="col-md-9 register-right">
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active">
+                    <div class="container">
+                        <h3 class="register-heading">Anuncie seu produto grátis!</h3>
+                        <div class="register-form">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <mat-form-field appearance="standard">
+                                        <mat-label>Titulo</mat-label>
+                                        <input matInput>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-sm-12 col-md-3">
+                                    <mat-form-field appearance="standard">
+                                        <mat-label>Valor</mat-label>
+                                        <input matInput>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-sm-12 col-md-3">
+                                    <mat-form-field >
+                                        <mat-label>Tipo de Aluguel</mat-label>
+                                        <select matNativeControl required>
+                                            <option value="" disabled selected></option>
+                                          <option [value]="rent.name" *ngFor="let rent of rentTypes; index as i">{{rent.title}}</option>
+                                        </select>
+                                      </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <mat-form-field>
+                                        <mat-label>Descreva seu produto</mat-label>
+                                        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                                            cdkAutosizeMinRows="5" cdkAutosizeMaxRows="5"></textarea>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <mat-form-field >
+                                                <mat-label>Categorias</mat-label>
+                                                <select matNativeControl required>
+                                                    <option value="" disabled selected></option>
+                                                  <option [value]="category.name" *ngFor="let category of categories; index as i">{{category.title}}</option>
+                                                </select>
+                                              </mat-form-field>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <mat-form-field appearance="standard">
+                                                <mat-label>CEP</mat-label>
+                                                <input matInput>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-8">
+                                    <span>Termos:</span>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
+                                            value="option1">
+                                        <label class="form-check-label" for="inlineCheckbox1">Concordo em deixar meu
+                                            e-mail visível nesse anúncio</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                            value="option2">
+                                        <label class="form-check-label" for="inlineCheckbox2">Concordo em deixar meu
+                                            telefone visível nesse
+                                            anúncio:</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3"
+                                            value="option3">
+                                        <label class="form-check-label" for="inlineCheckbox3">Concordo com os termos e
+                                            condições do "NomeDoSite"</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-lg-4 align-self-end">
+                                    <input type="submit" class="btnRegister" value="Anunciar" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
