@@ -34,16 +34,19 @@ export class LoginComponent implements OnInit {
 
   public login(): void {
     this.failedToLogin = false;
-    if (this.loginForm.valid) {
-      this.userService.Login(this.loginForm.value).subscribe(response => {
-        sessionStorage.setItem('user', JSON.stringify(response));
-        this.router.navigate(['/']);
-      }, error => {
-        this.failedToLogin = true;
-        this.loginForm.get('password').setValue('');
-        this.loginForm.get('password').setErrors({wrongData: true});
-        this.loginForm.get('password').setErrors({required: false});
-      })
+
+    if (!this.loginForm.valid) {
+      return;
     }
+
+    this.userService.Login(this.loginForm.value).subscribe(response => {
+      sessionStorage.setItem('user', JSON.stringify(response));
+      this.router.navigate(['/']);
+    }, error => {
+      this.failedToLogin = true;
+      this.loginForm.get('password').setValue('');
+      this.loginForm.get('password').setErrors({ wrongData: true });
+      this.loginForm.get('password').setErrors({ required: false });
+    })
   }
 }
