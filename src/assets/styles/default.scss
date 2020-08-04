@@ -1,6 +1,19 @@
 .btn-radius {
   border-radius: 30px !important;
 }
+.btn-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: right;
+  border: none;
+  border-radius: 1.5rem;
+  padding: 2%;
+  color: #fff;
+  font-weight: 600;
+  width: 50%;
+  cursor: pointer;
+}
 .pointer {
   cursor: pointer;
 }

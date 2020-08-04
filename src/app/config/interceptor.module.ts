@@ -19,7 +19,7 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
     let user = JSON.parse(sessionStorage.getItem('user'));
 
     if (!this.allowed.includes(request.url)) {
-      if (user.token) {
+      if (user && user.token) {
         request = request.clone({
           setHeaders: { Authorization: `Bearer ${user.token}` },
         });

@@ -23,4 +23,16 @@ export class Utils {
     public isFormValid(form: FormGroup): boolean {
         return form.valid && form.touched;
     }
+
+    public orderArray(array: Array<any>, field: string) {
+        return array.sort((a, b) => {
+            if (a[field] > b[field]) {
+                return 1;
+            }
+            if (a[field] < b[field]) {
+                return -1;
+            }
+            return 0;
+        });
+    }
 }

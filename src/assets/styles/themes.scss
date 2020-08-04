@@ -47,6 +47,9 @@ $theme-colors: (
 .bg-hover-light:hover {
   background-color: #ebebeb;
 }
+.bg-linear-primary {
+  background: -webkit-linear-gradient(left, #3931af, #00c6ff) !important;
+}
 
 .box-shadow-light-grey-100 {
   -webkit-box-shadow: 0px 0px 11px 0px rgba(231, 231, 231, 1);

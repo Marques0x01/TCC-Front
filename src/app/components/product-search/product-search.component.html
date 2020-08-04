@@ -1,7 +1,7 @@
 <div class="container py-5 text-light-purple">
     <div class="row">
         <div class="col-md-12 col-lg-3">
-            <form [formGroup]="searchForm">
+            <form [formGroup]="searchForm" (submit)="onSearch()">
                 <div class="row" *ngIf="textSearched">
                     <div class="col-sm-12">
                         <span class="d-block f-18 font-weight-bold">{{textSearched}}</span>
@@ -14,7 +14,8 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="input-group">
-                            <input type="text" class="form-control border-light-purple text-light-purple input-size">
+                            <input type="text" class="form-control border-light-purple text-light-purple input-size"
+                                formControlName="search">
                             <div class="input-group-append pointe input-size pointer">
                                 <span class="input-group-text bg-light border-light-purple" id="basic-addon2">
                                     <mat-icon class="material-icons f-25 text-light-purple">search</mat-icon>
@@ -28,13 +29,10 @@
                         <span class="font-weight-bold">Categorias</span>
                     </div>
                     <div class="col-sm-12 mt-1">
-                        <div class="form-check" *ngFor="let category of categories; index as i;">
-                            <input class="form-check-input" type="checkbox" [id]="category.name" [value]="category.name"
-                                formControlName="categories">
-                            <label class="form-check-label f-13" [for]="category.name">
-                                {{category.title}}
-                            </label>
-                        </div>
+                        <section *ngFor="let category of categories; index as i;">
+                            <mat-checkbox (change)="toggleFormsItem(category.name, 'categories')" color="primary">
+                                {{category.title}}</mat-checkbox>
+                        </section>
                     </div>
                 </div>
                 <div class="row my-4">
@@ -42,16 +40,13 @@
                         <span class="font-weight-bold">Tipo de alugel</span>
                     </div>
                     <div class="col-sm-12 mt-1">
-                        <div class="form-check" *ngFor="let type of rentTypes; index as i">
-                            <input class="form-check-input" type="checkbox" [id]="type.name" [value]="type.name"
-                                formControlName="rentTypes">
-                            <label class="form-check-label f-13" [for]="type.name">
-                                {{type.title}}
-                            </label>
-                        </div>
+                        <section *ngFor="let type of rentTypes; index as i">
+                            <mat-checkbox (change)="toggleFormsItem(type.name, 'rentTypes')" color="primary">
+                                {{type.title}}</mat-checkbox>
+                        </section>
                     </div>
                 </div>
-                <div class="row my-4">
+                <div class="row">
                     <div class="col-sm-12">
                         <span class="font-weight-bold">Faixa de preço</span>
                     </div>
@@ -68,22 +63,43 @@
                         </mat-form-field>
                     </div>
                 </div>
-                <!-- <div class="row">
-                <div class="col-sm-12" style="background-color: red; ">
-                    ESTADO
+                <div class="row mb-3">
+                    <div class="col-sm-12 mb-2">
+                        <span class="font-weight-bold">Localidade</span>
+                    </div>
+                    <div class="col-sm-12">
+                        <mat-form-field>
+                            <mat-label>Estado</mat-label>
+                            <select matNativeControl (change)="onSelectState()" formControlName="state">
+                                <option value="" disabled selected></option>
+                                <option *ngFor="let state of states; index as i"  [ngValue]="state">
+                                    {{state.nome}} - {{state.sigla}}</option>
+                            </select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-12">
+                        <mat-form-field>
+                            <mat-label>Cidade</mat-label>
+                            <select matNativeControl  formControlName="city">
+                                <option value="" disabled selected></option>
+                                <option *ngFor="let city of cities; index as i" [ngValue]="city">
+                                    {{city.nome}}</option>
+                            </select>
+                        </mat-form-field>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12" style="background-color: blue; ">
-                    CIDADE
+                <div class="row mb-3">
+                    <div class="col-sm-12">
+                        <button class="btn-main bg-primary" type="submit">Pesquisar</button>
+                    </div>
                 </div>
-            </div> -->
             </form>
         </div>
         <div class="col-md-12 col-lg-9">
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="row product-card box-shadow-light-grey-100 pointer mb-4" *ngFor="let product of products; index as i">
+                    <div class="row product-card box-shadow-light-grey-100 pointer mb-4"
+                        *ngFor="let product of products; index as i">
                         <div class="product-image col-sm-2 d-flex justify-content-center bg-light-grey">
                             <img [src]="product.image" width="120" height="140" alt="...">
                         </div>

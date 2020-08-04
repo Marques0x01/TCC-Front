@@ -1,54 +1,63 @@
-<nav class="navbar-light bg-light py-2 container" (window:resize)="onResize($event)" *ngIf="showHeader">
-  <div class="row">
-    <div class="col-8">
-      <div class="d-flex align-items-center">
-        <div class="d-flex align-items-center" [routerLink]="['/']">
-          <img src="../assets/icons/icon.png" width="55" height="55" alt="logo" class="logo pointer" />
-          <div class="f-17 mr-4 text-primary font-weight-bold pointer">CONCLUSÃO</div>
-        </div>
-        <div class="d-flex align-items-center" *ngIf="pageWidth > 1000">
-          <div class="custom-search-input mr-3">
-            <div class="input-group">
-              <input type="text" class="form-control text-primary input-lg" placeholder="Buscar" />
-              <span class="input-group-btn">
-                <button class="btn btn-info btn-lg" type="button">
-                  <mat-icon class="material-icons f-25">search</mat-icon>
-                </button>
-              </span>
-            </div>
+<nav class="navbar-light py-2 bg-linear-primary" (window:resize)="onResize($event)" *ngIf="showHeader">
+  <div class="container">
+    <div class="row">
+      <div class="col-8">
+        <div class="d-flex align-items-center">
+          <div class="d-flex align-items-center" [routerLink]="['/']">
+            <img src="../assets/icons/icon.png" width="55" height="55" alt="logo" class="logo pointer" />
+            <div class="f-17 mr-4 text-light font-weight-bold pointer">CONCLUSÃO</div>
           </div>
-          <div class="dropdown-category" (mouseenter)="dropdown.open();" (mouseleave)="dropdown.close();">
-            <div ngbDropdown #dropdown="ngbDropdown" class="d-inline-block p-1">
-              <button class="btn btn-outline-primary btn-sm" id="dropdown-category"
-                ngbDropdownToggle>Categorias</button>
-              <div ngbDropdownMenu aria-labelledby="dropdown-category">
-                <button ngbDropdownItem class="text-primary f-13" *ngFor="let category of categories; indes as i">{{category.title}}</button>
+          <div class="d-flex align-items-center" *ngIf="pageWidth > 1000">
+            <div class="custom-search-input mr-3">
+              <div class="input-group">
+                <input type="text" class="form-control text-primary input-lg" placeholder="Buscar" />
+                <span class="input-group-btn">
+                  <button class="btn btn-info btn-lg" type="button">
+                    <mat-icon class="material-icons f-25">search</mat-icon>
+                  </button>
+                </span>
+              </div>
+            </div>
+            <div class="dropdown-category" (mouseenter)="dropdown.open();" (mouseleave)="dropdown.close();">
+              <div ngbDropdown #dropdown="ngbDropdown" class="d-inline-block p-1">
+                <button class="btn btn-outline-primary btn-sm" id="dropdown-category"
+                  ngbDropdownToggle>Categorias</button>
+                <div ngbDropdownMenu aria-labelledby="dropdown-category">
+                  <button ngbDropdownItem class="text-primary f-13"
+                    *ngFor="let category of categories; indes as i">{{category.title}}</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-      </div>
-    </div>
-    <div class="col-4 d-flex justify-content-end align-items-center">
-      <button class="font-weight-bold f-18 pointer d-flex align-items-center btn btn-primary btn-radius btn-sm"
-        *ngIf="pageWidth > 1000 && !isLogged" [routerLink]="['/login']">
-        <mat-icon class="material-icons text-light f-25 mr-1 font-weight-bold">account_circle</mat-icon>
-        <span class="f-15">Login</span>
-      </button>
-      <div ngbDropdown class="d-inline-block" *ngIf="pageWidth > 1000 && isLogged">
-        <button class="btn text-primary" ngbDropdownToggle>Bem vindo, {{user.name}}</button>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button ngbDropdownItem class="text-primary" [routerLink]="['/conta']">Minha conta</button>
-          <button ngbDropdownItem class="text-primary">Configurações</button>
-          <div class="dropdown-divider"></div>
-          <button ngbDropdownItem class="text-primary" (click)="logout()">Sair</button>
         </div>
       </div>
-      <button class="navbar-toggler text-primary" type="button" (click)="toggleNav()" *ngIf="pageWidth <= 1000"
-        #SidenavButton>
-        &#9776;
-      </button>
+      <div class="col-4 d-flex justify-content-end align-items-center">
+        <button class="btn-main bg-light text-dark mr-2" *ngIf="pageWidth > 1000 && !isLogged"
+          [routerLink]="['/registrar-produto']">
+          <mat-icon class="material-icons text-dark f-25 mr-1">attach_money</mat-icon>
+          <span>Anuncie</span>
+        </button>
+        <button class="btn-main bg-light text-dark mr-2" *ngIf="pageWidth > 1000 && !isLogged"
+          [routerLink]="['/login']">
+          <mat-icon class="material-icons text-dark f-25 mr-2">account_circle</mat-icon>
+          <span>Login</span>
+        </button>
+
+        <div ngbDropdown class="d-inline-block" *ngIf="pageWidth > 1000 && isLogged">
+          <button class="btn text-primary" ngbDropdownToggle>Bem vindo, {{user.name}}</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem class="text-primary" [routerLink]="['/conta']">Minha conta</button>
+            <button ngbDropdownItem class="text-primary">Configurações</button>
+            <div class="dropdown-divider"></div>
+            <button ngbDropdownItem class="text-primary" (click)="logout()">Sair</button>
+          </div>
+        </div>
+        <button class="navbar-toggler text-primary" type="button" (click)="toggleNav()" *ngIf="pageWidth <= 1000"
+          #SidenavButton>
+          &#9776;
+        </button>
+      </div>
     </div>
   </div>
 </nav>
@@ -90,7 +99,8 @@
       </li>
       <li class="list-group-item d-flex align-items-centerpointer" *ngIf="!isCollapsedCategories">
         <div [ngbCollapse]="isCollapsedCategories">
-          <div class="text-primary p-2 ml-4 side-item-category pointer" *ngFor="let category of categories; indes as i">{{category.title}}</div>
+          <div class="text-primary p-2 ml-4 side-item-category pointer" *ngFor="let category of categories; indes as i">
+            {{category.title}}</div>
         </div>
       </li>
     </ul>

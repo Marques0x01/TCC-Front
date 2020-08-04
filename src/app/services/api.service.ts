@@ -35,4 +35,16 @@ export class ApiService {
   GetAllUsers(){
     return this.http.get(this.baseUrl + '/user');
   }
+
+  GetCityAndStateByCEP(cep: string){
+    return this.http.get(`https://viacep.com.br/ws/${cep}/json/`);
+  }
+
+  GetStates(){
+    return this.http.get('https://servicodados.ibge.gov.br/api/v1/localidades/estados');
+  }
+
+  GetCities(state :string){
+    return this.http.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${state}/municipios`);
+  }
 }

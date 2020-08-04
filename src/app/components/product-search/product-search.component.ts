@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { CategoriesModel } from '@app/models/caregories.model';
 import { RentTypeModel } from '@app/models/rentType.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ApiService } from '@app/services/api.service';
+import { Utils } from '@app/utils/utils';
 
 @Component({
   selector: 'app-product-search',
@@ -15,6 +17,10 @@ export class ProductSearchComponent implements OnInit {
   public rentTypes: Array<Object> = RentTypeModel.rentTypes;
   public textSearched: string;
   public searchForm: FormGroup;
+  public states: any;
+  public cities: any;
+  private utils: Utils = new Utils;
+  private selectedState: Object;
 
   public products = [
     {
@@ -59,7 +65,7 @@ export class ProductSearchComponent implements OnInit {
     }
   ]
 
-  public constructor(private route: ActivatedRoute, private fb: FormBuilder) {
+  public constructor(private route: ActivatedRoute, private fb: FormBuilder, private service: ApiService) {
     this.route.queryParams.subscribe(params => {
       this.textSearched = params.textSearched;
     });
@@ -67,6 +73,7 @@ export class ProductSearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.createSearchForm();
+    this.getStates()
   }
 
   public createSearchForm(): void {
@@ -75,12 +82,42 @@ export class ProductSearchComponent implements OnInit {
       categories: [],
       rentTypes: [],
       minPrice: [""],
-      maxPrice: [""]
+      maxPrice: [""],
+      state: [],
+      city: []
     })
   }
 
   public onSearch(): void {
+    console.log(this.searchForm.value);
+  }
 
+  public toggleFormsItem(item, field): void {
+    let categories = this.searchForm.get(field).value;
+
+    categories = categories == null ? [] : categories;
+    if (categories.includes(item)) {
+      categories.splice(categories.indexOf(item), 1)
+    } else {
+      categories.push(item);
+    }
+
+    this.searchForm.get(field).setValue(categories);
+  }
+
+  getStates() {
+    this.service.GetStates().subscribe(response => {
+      this.states = this.utils.orderArray(<Array<any>>response, "nome");
+    })
+    
+  }
+
+  onSelectState() {
+    let state = this.searchForm.get('state').value;
+    
+    this.service.GetCities(state.id).subscribe(response => {
+      this.cities = this.utils.orderArray(<Array<any>>response, "nome");
+    })
   }
 
 }
