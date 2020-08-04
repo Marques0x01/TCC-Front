@@ -128,15 +128,17 @@
                                             <mat-checkbox class="example-margin" color="primary"
                                                 formControlName="termEmail">Concordo em deixar meu
                                                 e-mail visível nesse anúncio</mat-checkbox>
-                                            <mat-checkbox class="example-margin" color="primary"
-                                                formControlName="termNumber">Concordo em deixar meu
-                                                telefone visível nesse anúncio</mat-checkbox>
                                             <mat-checkbox class="example-margin" color="primary" formControlName="term">
                                                 Concordo com os termos
                                                 e condições do "NomeDoSite"</mat-checkbox>
+                                            <span class="f-13 text-danger d-block mb-2" *ngIf="invalidTerms">Os termos acima
+                                                devem
+                                                estar
+                                                de acordo para a publicação do anúncio</span>
+                                            <mat-checkbox class="example-margin" color="primary"
+                                                formControlName="termNumber">Concordo em deixar meu
+                                                telefone visível nesse anúncio (opcional)</mat-checkbox>
                                         </section>
-                                        <span class="f-13 text-danger" *ngIf="invalidTerms">Todos os termos devem estar
-                                            de acordo para a publicação do anúncio</span>
                                     </div>
                                     <div class="col-sm-12 col-lg-4 align-self-end">
                                         <input type="submit" class="btnRegister" value="Anunciar" />

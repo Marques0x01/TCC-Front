@@ -35,8 +35,6 @@ export class ProductRegisterComponent implements OnInit {
       this.registerForm.get('city').setValue(location.localidade);
       this.registerForm.get('neighborhood').setValue(location.bairro);
       this.registerForm.get('street').setValue(location.logradouro);
-      console.log(location.logradouro);
-      
     }, error => {
       this.registerForm.get('zipCode').setErrors({'notFound': true});
     })
@@ -72,7 +70,6 @@ export class ProductRegisterComponent implements OnInit {
 
   public isTermsValid() {
     if (this.registerForm.get('termEmail').value &&
-      this.registerForm.get('termNumber').value &&
       this.registerForm.get('term').value) {
       return true;
     }
