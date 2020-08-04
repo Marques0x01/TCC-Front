@@ -33,6 +33,11 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.failedToRegister = false;
+
+    if(!this.registerForm.valid){
+      return;
+    }
+    
     let forms = this.registerForm.value;
     let user: UserRegister = {
       name: forms.name,

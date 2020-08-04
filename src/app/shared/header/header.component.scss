@@ -24,7 +24,7 @@
 }
 
 .navbar-toggler {
-  border-color: $primary;
+  border-color: $light;
 }
 
 .logo {
@@ -88,4 +88,8 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
+}
+
+.user-config {
+  width: 130%;
 }

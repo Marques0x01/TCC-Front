@@ -24,19 +24,24 @@ export class ProductRegisterComponent implements OnInit {
     this.createForm();
   }
 
-  public findLocationByZipCode(){
-    if(this.registerForm.get('zipCode').value.length < 8){
+  public findLocationByZipCode() {
+    if (this.registerForm.get('zipCode').value.length < 8) {
       return;
     }
 
     this.service.GetCityAndStateByCEP(this.registerForm.get('zipCode').value).subscribe(response => {
       let location: any = response;
+
+      if (location.erro) {
+        this.registerForm.get('zipCode').setErrors({ 'notFound': true });
+        return;
+      }
+
       this.registerForm.get('state').setValue(location.uf);
       this.registerForm.get('city').setValue(location.localidade);
       this.registerForm.get('neighborhood').setValue(location.bairro);
       this.registerForm.get('street').setValue(location.logradouro);
-    }, error => {
-      this.registerForm.get('zipCode').setErrors({'notFound': true});
+
     })
 
   }
@@ -46,13 +51,13 @@ export class ProductRegisterComponent implements OnInit {
       title: ['', [Validators.required, Validators.maxLength(50)]],
       price: ['', Validators.required],
       rentType: ['', Validators.required],
-      description: ['', [Validators.required, Validators.maxLength(120)]],
+      description: ['', [Validators.required, Validators.maxLength(150)]],
       category: ['', Validators.required],
       zipCode: ['', [Validators.required, Validators.maxLength(8), Validators.minLength(8)]],
-      street: [{value: '', disabled: true}],
-      neighborhood: [{value: '', disabled: true}],
-      city: [{value: '', disabled: true}],
-      state: [{value: '', disabled: true}],
+      street: [{ value: '', disabled: true }],
+      neighborhood: [{ value: '', disabled: true }],
+      city: [{ value: '', disabled: true }],
+      state: [{ value: '', disabled: true }],
       termEmail: [false, Validators.requiredTrue],
       termNumber: [false, Validators.requiredTrue],
       term: [false, Validators.requiredTrue]

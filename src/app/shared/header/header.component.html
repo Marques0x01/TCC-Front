@@ -20,10 +20,10 @@
             </div>
             <div class="dropdown-category" (mouseenter)="dropdown.open();" (mouseleave)="dropdown.close();">
               <div ngbDropdown #dropdown="ngbDropdown" class="d-inline-block p-1">
-                <button class="btn btn-outline-primary btn-sm" id="dropdown-category"
+                <button class="btn btn-light btn-sm" id="dropdown-category"
                   ngbDropdownToggle>Categorias</button>
                 <div ngbDropdownMenu aria-labelledby="dropdown-category">
-                  <button ngbDropdownItem class="text-primary f-13"
+                  <button ngbDropdownItem class="f-13"
                     *ngFor="let category of categories; indes as i">{{category.title}}</button>
                 </div>
               </div>
@@ -45,15 +45,15 @@
         </button>
 
         <div ngbDropdown class="d-inline-block" *ngIf="pageWidth > 1000 && isLogged">
-          <button class="btn text-primary" ngbDropdownToggle>Bem vindo, {{user.name}}</button>
+          <button class="btn-main text-dark bg-light user-config font-weight-normal" ngbDropdownToggle>Bem vindo, {{user.name}}</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button ngbDropdownItem class="text-primary" [routerLink]="['/conta']">Minha conta</button>
-            <button ngbDropdownItem class="text-primary">Configurações</button>
+            <button ngbDropdownItem class="text-dark" [routerLink]="['/conta']">Minha conta</button>
+            <button ngbDropdownItem class="text-dark">Configurações</button>
             <div class="dropdown-divider"></div>
-            <button ngbDropdownItem class="text-primary" (click)="logout()">Sair</button>
+            <button ngbDropdownItem class="text-dark" (click)="logout()">Sair</button>
           </div>
         </div>
-        <button class="navbar-toggler text-primary" type="button" (click)="toggleNav()" *ngIf="pageWidth <= 1000"
+        <button class="navbar-toggler text-light" type="button" (click)="toggleNav()" *ngIf="pageWidth <= 1000"
           #SidenavButton>
           &#9776;
         </button>
@@ -66,7 +66,7 @@
 <div #Sidenav id="sideNav" class="sidenav bg-light text-primary">
   <div>
     <ul class="list-group">
-      <li class="list-group-item bg-hover-light d-flex align-items-center pointer" *ngIf="!isLogged">
+      <li class="list-group-item bg-hover-light d-flex align-items-center pointer">
         <img src="../assets/icons/icon.png" width="55" height="55" alt="logo" class="logo pointer" />
         <div class="f-17 mr-4 text-primary font-weight-bold pointer">CONCLUSÃO</div>
       </li>
@@ -83,7 +83,6 @@
         <div [ngbCollapse]="isCollapsedUser">
           <div class="text-primary p-2 ml-4 side-item-category pointer">Minha Conta </div>
           <div class="text-primary p-2 ml-4 side-item-category pointer">Configurações </div>
-          <div class="text-primary p-2 ml-4 side-item-category pointer">Esportes </div>
           <div class="text-primary p-2 ml-4 side-item-category pointer" (click)="logout()">Sair</div>
         </div>
       </li>
