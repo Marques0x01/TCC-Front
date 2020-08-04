@@ -77,7 +77,7 @@
                             </select>
                         </mat-form-field>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12" *ngIf="this.searchForm.get('state').value != null">
                         <mat-form-field>
                             <mat-label>Cidade</mat-label>
                             <select matNativeControl  formControlName="city">

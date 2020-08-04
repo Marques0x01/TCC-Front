@@ -89,7 +89,7 @@ export class ProductSearchComponent implements OnInit {
   }
 
   public onSearch(): void {
-    console.log(this.searchForm.value);
+    console.log(this.searchForm.get('state').value);
   }
 
   public toggleFormsItem(item, field): void {
