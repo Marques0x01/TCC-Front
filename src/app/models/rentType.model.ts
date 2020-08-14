@@ -1,10 +1,10 @@
 export class RentTypeModel {
     public static rentTypes: Array<Object> = [
-        { id: 1, name: "daily", title: "Diariamente" },
-        { id: 2, name: "weekly", title: "Semanalmente" },
-        { id: 3, name: "monthly", title: "Mensalmente" },
-        { id: 4, name: "moreThanAMonth", title: "Mais de um mês" },
-        { id: 5, name: "negotiable", title: "Negociável" }
+        { id: 1, name: "DAILY", title: "Diariamente" },
+        { id: 2, name: "WEEKLY", title: "Semanalmente" },
+        { id: 3, name: "MONTHLY", title: "Mensalmente" },
+        { id: 4, name: "MORE_THAN_A_MONTH", title: "Mais de um mês" },
+        { id: 5, name: "NEGOTIABLE", title: "Negociável" }
     ]
 }
 

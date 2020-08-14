@@ -1,8 +1,10 @@
 import { Component, OnInit, ElementRef, ViewChild, Renderer2 } from '@angular/core';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Router, NavigationStart } from '@angular/router';
-import { User } from '@app/models/user/user';
-import { CategoriesModel } from '@app/models/caregories.model';
+import { User } from '@app/models/user';
+import { CategoriesModel } from '@app/models/categories.model';
+import { Utils } from '@app/utils/utils';
+import { DialogModals } from '@app/utils/dialog-modals';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +26,7 @@ export class HeaderComponent implements OnInit {
   @ViewChild('Sidenav') sidenav: ElementRef;
 
 
-  constructor(private router: Router) {
+  constructor(private router: Router, public dialog: DialogModals) {
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
         if (event['url'] == '/login' || event['url'] == '/registrar') {
@@ -46,20 +48,20 @@ export class HeaderComponent implements OnInit {
     this.pageWidth = window.innerWidth;
   }
 
-  logout() {
+  public logout(): void {
     sessionStorage.removeItem('user');
     location.reload();
     this.router.navigateByUrl('/')
   }
 
-  onResize(e) {
+  public onResize(e): void {
     this.pageWidth = e.target.innerWidth;
     if (this.pageWidth > 1000) {
       document.getElementById("sideNav").style.width = "0";
     }
   }
 
-  toggleNav() {
+  public toggleNav(): void {
     if (this.isSidebarOpen) {
       this.closeNav();
     } else {
@@ -67,18 +69,25 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  openNav() {
+  public openNav(): void {
     document.getElementById("sideNav").style.width = "300px";
     document.getElementById("sideNav").classList.add("border");
     this.isSidebarOpen = true;
   }
 
-  closeNav() {
+  public closeNav(): void {
     document.getElementById("sideNav").style.width = "0";
     document.body.style.backgroundColor = "white";
     document.getElementById("sideNav").classList.remove("border");
     this.isSidebarOpen = false;
   }
 
+  public onAnnounce(): void {
+    if(this.isLogged){
+      this.router.navigate(["registrar-produto"]);
+    }  else {
+      this.dialog.loginError();
+    }
+  }
 
 }

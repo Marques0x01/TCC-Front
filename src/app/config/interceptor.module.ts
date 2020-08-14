@@ -18,12 +18,10 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let user = JSON.parse(sessionStorage.getItem('user'));
 
-    if (!this.allowed.includes(request.url)) {
-      if (user && user.token) {
-        request = request.clone({
-          setHeaders: { Authorization: `Bearer ${user.token}` },
-        });
-      }
+    if (user && user.token) {
+      request = request.clone({
+        setHeaders: { Authorization: `Bearer ${user.token}` },
+      });
     }
 
     return next.handle(request)

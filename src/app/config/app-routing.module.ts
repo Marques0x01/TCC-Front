@@ -15,8 +15,7 @@ const routes: Routes = [
   { path: 'conta', component: AccountComponent },
   { path: 'pesquisar', component: ProductSearchComponent },
   { path: 'produto', component: ProductComponent },
-  { path: 'registrar-produto', component: ProductRegisterComponent }
-
+  { path: 'registrar-produto', component: ProductRegisterComponent },
 ];
 
 @NgModule({

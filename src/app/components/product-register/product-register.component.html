@@ -121,6 +121,34 @@
                                         </mat-form-field>
                                     </div>
                                 </div>
+                                <div class="row my-3">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="validatedCustomFile"
+                                                required multiple (change)="onFileChanged($event)"
+                                                formControlName="images" accept="image/png, image/jpeg">
+                                            <mat-hint>{{selectedFile.length}}/5</mat-hint>
+                                            <label class="custom-file-label" for="validatedCustomFile">Procurar
+                                                Imagens</label>
+                                            <mat-error *ngIf="utils.hasError(registerForm, 'images', 'imageNotLoaded')">
+                                                Necessário carregar 1 imagem</mat-error>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3" *ngIf="selectedFile.length > 0">
+                                    <div class="col">
+                                        <div class="card" style="width: 18rem;">
+                                            <ul class="list-group list-group-flush">
+                                                <div class="d-flex justify-content-between align-items-center"
+                                                    *ngFor="let file of selectedFile; index as i">
+                                                    <li class="list-group-item image-name border-0">{{file.name}}</li>
+                                                    <div class="list-group-item border-0 pointer image-remove"
+                                                        (click)="removeImage(i)">x</div>
+                                                </div>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-sm-12 col-lg-8">
                                         <span>Termos:</span>
@@ -131,7 +159,8 @@
                                             <mat-checkbox class="example-margin" color="primary" formControlName="term">
                                                 Concordo com os termos
                                                 e condições do "NomeDoSite"</mat-checkbox>
-                                            <span class="f-13 text-danger d-block mb-2" *ngIf="invalidTerms">Os termos acima
+                                            <span class="f-13 text-danger d-block mb-2" *ngIf="invalidTerms">Os termos
+                                                acima
                                                 devem
                                                 estar
                                                 de acordo para a publicação do anúncio</span>
@@ -143,6 +172,7 @@
                                     <div class="col-sm-12 col-lg-4 align-self-end">
                                         <input type="submit" class="btnRegister" value="Anunciar" />
                                     </div>
+
                                 </div>
                             </form>
                         </div>

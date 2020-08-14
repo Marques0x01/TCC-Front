@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CategoriesModel } from '@app/models/caregories.model';
+import { CategoriesModel } from '@app/models/categories.model';
 import { RentTypeModel } from '@app/models/rentType.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApiService } from '@app/services/api.service';

@@ -1,7 +1,7 @@
 <nav class="navbar-light py-2 bg-linear-primary" (window:resize)="onResize($event)" *ngIf="showHeader">
   <div class="container">
     <div class="row">
-      <div class="col-8">
+      <div class="col-7">
         <div class="d-flex align-items-center">
           <div class="d-flex align-items-center" [routerLink]="['/']">
             <img src="../assets/icons/icon.png" width="55" height="55" alt="logo" class="logo pointer" />
@@ -20,8 +20,7 @@
             </div>
             <div class="dropdown-category" (mouseenter)="dropdown.open();" (mouseleave)="dropdown.close();">
               <div ngbDropdown #dropdown="ngbDropdown" class="d-inline-block p-1">
-                <button class="btn btn-light btn-sm" id="dropdown-category"
-                  ngbDropdownToggle>Categorias</button>
+                <button class="btn btn-light btn-sm" id="dropdown-category" ngbDropdownToggle>Categorias</button>
                 <div ngbDropdownMenu aria-labelledby="dropdown-category">
                   <button ngbDropdownItem class="f-13"
                     *ngFor="let category of categories; indes as i">{{category.title}}</button>
@@ -32,20 +31,21 @@
 
         </div>
       </div>
-      <div class="col-4 d-flex justify-content-end align-items-center">
-        <button class="btn-main bg-light text-dark mr-2" *ngIf="pageWidth > 1000 && !isLogged"
-          [routerLink]="['/registrar-produto']">
+      <div class="col-5 d-flex justify-content-end align-items-center">
+        <button class="btn-main bg-light text-dark mr-2 font-weight-normal py-2" *ngIf="pageWidth > 1000"
+          (click)="onAnnounce()">
           <mat-icon class="material-icons text-dark f-25 mr-1">attach_money</mat-icon>
           <span>Anuncie</span>
         </button>
-        <button class="btn-main bg-light text-dark mr-2" *ngIf="pageWidth > 1000 && !isLogged"
+        <button class="btn-main bg-light text-dark mr-2 font-weight-normal py-2" *ngIf="pageWidth > 1000 && !isLogged"
           [routerLink]="['/login']">
           <mat-icon class="material-icons text-dark f-25 mr-2">account_circle</mat-icon>
           <span>Login</span>
         </button>
 
         <div ngbDropdown class="d-inline-block" *ngIf="pageWidth > 1000 && isLogged">
-          <button class="btn-main text-dark bg-light user-config font-weight-normal" ngbDropdownToggle>Bem vindo, {{user.name}}</button>
+          <button class="btn-main p-2 px-4 text-dark bg-light user-config font-weight-normal" ngbDropdownToggle>Bem
+            vindo, {{user.name}}</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button ngbDropdownItem class="text-dark" [routerLink]="['/conta']">Minha conta</button>
             <button ngbDropdownItem class="text-dark">Configurações</button>

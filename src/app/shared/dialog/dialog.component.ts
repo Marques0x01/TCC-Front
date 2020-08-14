@@ -23,7 +23,7 @@ export class DialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.data.width = this.data.width == undefined ? 400 : this.data.width;
+    this.data.width = this.data.width == undefined ? 500 : this.data.width;
     this.data.height = this.data.height == undefined ? 200 : this.data.height;
     this.data.showCancel = this.data.showCancel == undefined ? true : this.data.showCancel;
     this.data.showConfirmation = this.data.showConfirmation == undefined ? true : this.data.showConfirmation;

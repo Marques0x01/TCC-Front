@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { ApiService } from '@app/services/api.service';
-import { UserRegister } from '@app/models/user/user';
+import { UserRegister } from '@app/models/user';
 import { Router } from '@angular/router';
 import { Utils } from '@app/utils/utils';
 import { FormsValidator } from '@app/utils/forms-validator';
-import { ErrorStateMatcher } from '@angular/material/core';
 
 @Component({
   selector: 'app-register',
@@ -57,7 +56,7 @@ export class RegisterComponent implements OnInit {
 
   createRegisterForm() {
     this.registerForm = this.fb.group({
-      name: ['', [Validators.required, FormsValidator.emptyString]],
+      name: ['', [Validators.required, FormsValidator.emptyString, Validators.maxLength(10)]],
       lastName: ['', [Validators.required, FormsValidator.emptyString]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],

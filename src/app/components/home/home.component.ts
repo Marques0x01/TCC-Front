@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, NavigationExtras } from '@angular/router';
-import { CategoriesModel } from '@app/models/caregories.model';
+import { CategoriesModel } from '@app/models/categories.model';
 import { RentTypeModel } from '@app/models/rentType.model';
 
 @Component({
