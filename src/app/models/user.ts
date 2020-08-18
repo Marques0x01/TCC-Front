@@ -2,6 +2,7 @@ export class User {
   public id: number;
   public name: string;
   public email: string;
+  public phoneNumber: string;
   public roles: Array<string>;
   public isActive: boolean;
   public token: string;

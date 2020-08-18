@@ -20,7 +20,6 @@ export class ProductSearchComponent implements OnInit {
   public states: any;
   public cities: any;
   private utils: Utils = new Utils;
-  private selectedState: Object;
 
   public products = [
     {

@@ -1,14 +1,16 @@
 .gallery-wrap .img-big-wrap img {
-    height: 450px;
-    width: auto;
     display: inline-block;
     cursor: zoom-in;
 }
 
+.main-image {
+    box-shadow: 2px 1px 10px 1px rgba(0,0,0,0.75);
+}
 
 .gallery-wrap .img-small-wrap .item-gallery {
     width: 60px;
     height: 60px;
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
     border: 1px solid #ddd;
     margin: 7px 2px;
     display: inline-block;
@@ -26,6 +28,30 @@
     cursor: zoom-in;
 }
 
-.product-description {
+.product-text {
     word-break: break-all;
+}
+
+#circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+}
+
+.loader {
+    width: calc(100% - 0px);
+    height: calc(100% - 0px);
+    border: 8px solid #e3e6e9;
+    border-top: 8px solid #09f;
+    border-radius: 50%;
+    animation: rotate 5s linear infinite;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
 }

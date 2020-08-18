@@ -1,5 +1,5 @@
-<footer *ngIf="showFooter"> 
-    <div class="footer py-5" id="footer">
+<footer *ngIf="showFooter fix-bottom">
+    <div class="footer pt-5" id="footer">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
@@ -59,19 +59,20 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="footer-bottom">
-        <div class="container">
-            <p class="pull-left"> Copyright © Footer 2020. All right reserved. </p>
-            <div class="pull-right">
-                <ul class="nav nav-pills payments">
-                    <li><i class="fa fa-cc-visa"></i></li>
-                    <li><i class="fa fa-cc-mastercard"></i></li>
-                    <li><i class="fa fa-cc-amex"></i></li>
-                    <li><i class="fa fa-cc-paypal"></i></li>
-                </ul>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="pull-left"> Copyright © Footer 2020. All right reserved. </p>
+                <div class="pull-right">
+                    <ul class="nav nav-pills payments">
+                        <li><i class="fa fa-cc-visa"></i></li>
+                        <li><i class="fa fa-cc-mastercard"></i></li>
+                        <li><i class="fa fa-cc-amex"></i></li>
+                        <li><i class="fa fa-cc-paypal"></i></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
+
+
 </footer>

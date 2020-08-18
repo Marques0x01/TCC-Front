@@ -8,6 +8,7 @@ import { ProductRegister } from '@app/models/product.model';
 import { AddressProductRegister } from '@app/models/address.model';
 import { User } from '@app/models/user';
 import { DialogModals } from '@app/utils/dialog-modals';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-product-register',
@@ -24,7 +25,7 @@ export class ProductRegisterComponent implements OnInit {
   public selectedFile: any = [];
 
 
-  constructor(private fb: FormBuilder, private service: ApiService, public dialog: DialogModals) { }
+  constructor(private fb: FormBuilder, private service: ApiService, public dialog: DialogModals, public router: Router) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -90,11 +91,15 @@ export class ProductRegisterComponent implements OnInit {
     let productRegister: ProductRegister = this.buildProduct();
 
     this.service.ProductSave(productRegister).subscribe(async response => {
-      console.log(response);
-
       let product = <ProductRegister>response;
       this.uploadImage(product.id);
       this.invalidTerms = false;
+      let navigationExtras: NavigationExtras = {
+        queryParams: {
+          id: product.id
+        }
+      };
+      this.router.navigate(["/produto"], navigationExtras);
     })
 
   }
@@ -165,18 +170,4 @@ export class ProductRegisterComponent implements OnInit {
       }
     }
   }
-
-  retrieveResonse
-  base64Data
-  retrievedImage = null
-  getImage() {
-    this.service.teste2().subscribe(response => {
-      this.retrieveResonse = response;
-      this.base64Data = this.retrieveResonse.picByte;
-      this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-    })
-  }
-
-
-
 }

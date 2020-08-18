@@ -8,6 +8,16 @@ export class RentTypeModel {
     ]
 }
 
+export class RentType {
+    public static types: Object = {
+        DAILY: { id: 1, name: "DAILY", title: "Diariamente" },
+        WEEKLY: { id: 2, name: "WEEKLY", title: "Semanalmente" },
+        MONTHLY: { id: 3, name: "MONTHLY", title: "Mensalmente" },
+        MORE_THAN_A_MONTH: { id: 4, name: "MORE_THAN_A_MONTH", title: "Mais de um mês" },
+        NEGOTIABLE: { id: 5, name: "NEGOTIABLE", title: "Negociável" }
+    }
+}
+
 export enum RentTypeEnum {
     DAILY = 1,
     WEEKLY = 2,

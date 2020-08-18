@@ -56,16 +56,19 @@ export class ApiService {
     return this.httpInterceptor.post(this.baseUrl + "/product", product);
   }
 
+  GetAllProducts(){
+    return this.http.get(this.baseUrl + "/product");
+  }
+
+  GetProduct(id: number){
+    return this.http.get(this.baseUrl + `/product/${id}`)
+  }
+
   ImageSave(file: File, product: number) {
     const formData: FormData = new FormData();
     formData.append('file', file);
     formData.append('productId', product.toString());
 
     return this.http.post(this.baseUrl + '/image', formData, { reportProgress: true, responseType: 'json' })
-  }
-
-  teste2() {
-
-    return this.http.get(this.baseUrl + `/product/${1}`);
   }
 }
