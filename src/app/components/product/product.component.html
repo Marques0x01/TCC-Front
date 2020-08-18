@@ -7,8 +7,8 @@
                         <img [src]="mainImage.picByte" width="450" height="450" alt="...">
                     </div>
                 </div>
-                <div class="img-small-wrap" *ngIf="product.images.length > 0">
-                    <div class="item-gallery" *ngFor="let image of product.images; index as i">
+                <div class="img-small-wrap mt-3" *ngIf="product.images.length > 0">
+                    <div class="item-gallery pointer mx-2" *ngFor="let image of product.images; index as i" (click)="onClickImage(i)" [ngClass]="product.images[i] === mainImage ? 'chosen-image' : ''">
                         <img [src]="image.picByte" width="60">
                     </div>
                 </div>
@@ -42,8 +42,8 @@
                         <div class="col-sm-12 mb-3">
                             <div>
                                 <div class="font-weight-bold">Localidade</div>
-                                <div>{{product.address.zipCode}}, {{product.address.district}} </div>
-                                <div>{{product.address.city}}, {{product.address.state}} </div>
+                                <div>{{product.address.zipCode}} - {{product.address.district}} </div>
+                                <div>{{product.address.city}} - {{product.address.state}} </div>
                             </div>
                         </div>
                     </div>
