@@ -81,19 +81,21 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mb-2">
+                                <div class="row">
                                     <div class="col-sm-2">
                                         <mat-form-field appearance="standard">
                                             <mat-label>CEP</mat-label>
                                             <input matInput formControlName="zipCode" minlength="8" maxlength="8"
                                                 (focusout)="findLocationByZipCode()">
-                                            <mat-hint>{{registerForm.get('zipCode').value.length}}/8</mat-hint>
                                             <mat-error *ngIf="utils.hasError(registerForm, 'zipCode', 'required')">
                                                 Necessário que seja preenchido um CEP</mat-error>
                                             <mat-error *ngIf="utils.hasError(registerForm, 'zipCode', 'minlength')">
                                                 CEP deve ter 8 digitos</mat-error>
                                             <mat-error *ngIf="utils.hasError(registerForm, 'zipCode', 'notFound')">
                                                 CEP não encontrado</mat-error>
+                                            <mat-error *ngIf="utils.hasError(registerForm, 'zipCode', 'onlyNumbers')">
+                                                Somente numeros
+                                                serão aceitos</mat-error>
                                         </mat-form-field>
                                     </div>
                                     <div class="col-sm-3">

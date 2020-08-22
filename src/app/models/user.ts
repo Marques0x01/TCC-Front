@@ -1,3 +1,5 @@
+import { AddressUserView } from './address.model';
+
 export class User {
   public id: number;
   public name: string;
@@ -20,3 +22,13 @@ export class UserRegister {
   public password: string;
 }
 
+export class UserView {
+  id: number;
+  name: string;
+  lastName: string;
+  email: string;
+  gender: string;
+  cpf: string;
+  phoneNumber: string;
+  address: AddressUserView;
+}

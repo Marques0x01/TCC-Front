@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpInterceptor, HttpBackend } from '@angular/common/http';
-import { UserLogin, UserRegister } from '../models/user';
+import { UserLogin, UserRegister, UserView } from '../models/user';
 import { environment } from '../../environments/environment.dev';
 import { Router } from '@angular/router';
 import { ProductRegister } from '@app/models/product.model';
+import { AddressUpdate } from '@app/models/address.model';
 
 
 @Injectable({
@@ -61,7 +62,19 @@ export class ApiService {
   }
 
   GetProduct(id: number){
-    return this.http.get(this.baseUrl + `/product/${id}`)
+    return this.http.get(this.baseUrl + `/product/${id}`);
+  }
+
+  GetUser(id: number){
+    return this.httpInterceptor.get(this.baseUrl + `/user/${id}`);
+  }
+
+  UpdateUser(user: UserView){
+    return this.httpInterceptor.put(this.baseUrl + '/user', user);
+  }
+
+  UpdateAddress(address: AddressUpdate){
+    return this.httpInterceptor.put(this.baseUrl + "/address", address);
   }
 
   ImageSave(file: File, product: number) {
@@ -69,6 +82,6 @@ export class ApiService {
     formData.append('file', file);
     formData.append('productId', product.toString());
 
-    return this.http.post(this.baseUrl + '/image', formData, { reportProgress: true, responseType: 'json' })
+    return this.httpInterceptor.post(this.baseUrl + '/image', formData, { reportProgress: true, responseType: 'json' })
   }
 }

@@ -9,6 +9,7 @@ import { AddressProductRegister } from '@app/models/address.model';
 import { User } from '@app/models/user';
 import { DialogModals } from '@app/utils/dialog-modals';
 import { Router, NavigationExtras } from '@angular/router';
+import { FormsValidator } from '@app/utils/forms-validator';
 
 @Component({
   selector: 'app-product-register',
@@ -44,12 +45,10 @@ export class ProductRegisterComponent implements OnInit {
         return;
       }
 
-
       this.registerForm.get('state').setValue(location.uf);
       this.registerForm.get('city').setValue(location.localidade);
       this.registerForm.get('neighborhood').setValue(location.bairro);
       this.registerForm.get('street').setValue(location.logradouro);
-
     })
 
   }
@@ -61,7 +60,7 @@ export class ProductRegisterComponent implements OnInit {
       rentType: ['', Validators.required],
       description: ['', [Validators.required, Validators.maxLength(150)]],
       category: ['', Validators.required],
-      zipCode: ['', [Validators.required, Validators.maxLength(8), Validators.minLength(8)]],
+      zipCode: ['', [Validators.required, Validators.maxLength(8), Validators.minLength(8), FormsValidator.onlyNumbers]],
       street: [{ value: '', disabled: true }],
       neighborhood: [{ value: '', disabled: true }],
       city: [{ value: '', disabled: true }],

@@ -12,4 +12,13 @@ export class FormsValidator {
         }
         return null;
     }
+
+    static onlyNumbers(control: AbstractControl){
+        if(control.value){
+            if(!/^\d+$/.test(control.value)){
+                return { "onlyNumbers": true}
+            }
+        }
+        return null;
+    }
 }
