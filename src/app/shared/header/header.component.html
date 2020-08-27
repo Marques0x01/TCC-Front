@@ -47,8 +47,8 @@
           <button class="btn-main p-2 px-4 text-dark bg-light user-config font-weight-normal" ngbDropdownToggle>Bem
             vindo, {{user.name}}</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button ngbDropdownItem class="text-dark" [routerLink]="['/conta']">Minha conta</button>
-            <button ngbDropdownItem class="text-dark">Configurações</button>
+            <button ngbDropdownItem class="text-dark" (click)="confirmUser()">Minha conta</button>
+            <button ngbDropdownItem class="text-dark" (click)="confirmUser()">Configurações</button>
             <div class="dropdown-divider"></div>
             <button ngbDropdownItem class="text-dark" (click)="logout()">Sair</button>
           </div>
@@ -81,8 +81,8 @@
       </li>
       <li class="list-group-item d-flex align-items-centerpointer" *ngIf="!isCollapsedUser">
         <div [ngbCollapse]="isCollapsedUser">
-          <div class="text-primary p-2 ml-4 side-item-category pointer">Minha Conta </div>
-          <div class="text-primary p-2 ml-4 side-item-category pointer">Configurações </div>
+          <div class="text-primary p-2 ml-4 side-item-category pointer" (click)="confirmUser()">Minha Conta </div>
+          <div class="text-primary p-2 ml-4 side-item-category pointer" (click)="confirmUser()">Configurações </div>
           <div class="text-primary p-2 ml-4 side-item-category pointer" (click)="logout()">Sair</div>
         </div>
       </li>
@@ -106,3 +106,25 @@
     <a class="closebtn f-25 pointer" (click)="closeNav()">&times;</a>
   </div>
 </div>
+
+
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmationModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+

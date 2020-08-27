@@ -33,15 +33,12 @@ export class ProductComponent implements OnInit {
         image.picByte = 'data:image/jpeg;base64,' + image.picByte;
       });
       this.mainImage = this.product.images[0];
-      // this.product.images.splice(this.product.images.indexOf(this.mainImage), 1);
       this.loading = false;
     })
   }
 
   public onClickImage(i): void {
-    // this.product.images.push(this.mainImage);
     this.mainImage = this.product.images[i];
-    // this.product.images.splice(this.product.images.indexOf(this.mainImage), 1);
   }
 
 

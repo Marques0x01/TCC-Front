@@ -21,7 +21,7 @@ import { MaterialModule } from './config/material-module';
     HttpClientModule,
     Interceptor,
     BrowserAnimationsModule,
-    MaterialModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent],

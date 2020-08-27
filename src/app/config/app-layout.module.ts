@@ -10,6 +10,7 @@ import { ProductSearchComponent } from '@app/components/product-search/product-s
 import { AccountComponent } from '@app/components/account/account.component';
 import { ProductComponent } from '@app/components/product/product.component';
 import { ProductRegisterComponent } from '@app/components/product-register/product-register.component';
+import { DialogTokenComponent } from '@app/shared/dialog-token/dialog-token.component';
 
 @NgModule({
   declarations: [],
@@ -19,5 +20,5 @@ import { ProductRegisterComponent } from '@app/components/product-register/produ
 })
 export class AppLayoutModule { }
 
-export const Components = [HomeComponent, HeaderComponent, LoginComponent, RegisterComponent, DialogComponent, FooterComponent, AccountComponent, 
+export const Components = [HomeComponent, HeaderComponent, LoginComponent, RegisterComponent, DialogComponent, DialogTokenComponent, FooterComponent, AccountComponent, 
                            ProductSearchComponent, ProductComponent, ProductRegisterComponent]

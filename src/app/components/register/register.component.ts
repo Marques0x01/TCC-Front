@@ -5,6 +5,7 @@ import { UserRegister } from '@app/models/user';
 import { Router } from '@angular/router';
 import { Utils } from '@app/utils/utils';
 import { FormsValidator } from '@app/utils/forms-validator';
+import { DialogModals } from '@app/utils/dialog-modals';
 
 @Component({
   selector: 'app-register',
@@ -18,25 +19,19 @@ export class RegisterComponent implements OnInit {
   public failedToRegister: boolean = false;
 
   ngOnInit(): void {
-    this.checkLogin();
     this.createRegisterForm();
   }
 
-  constructor(private fb: FormBuilder, private userService: ApiService, private router: Router) {
-
+  constructor(private fb: FormBuilder, private userService: ApiService, private router: Router, private dialog: DialogModals) {
   }
 
-  checkLogin() {
-    sessionStorage.getItem('user');
-  }
-
-  register() {
+  public register() {
     this.failedToRegister = false;
 
-    if(!this.registerForm.valid){
+    if (!this.registerForm.valid) {
       return;
     }
-    
+
     let forms = this.registerForm.value;
     let user: UserRegister = {
       name: forms.name,
@@ -45,16 +40,20 @@ export class RegisterComponent implements OnInit {
       password: forms.password
     }
     this.userService.Register(user).subscribe(response => {
-      this.router.navigate(["login"]);
+      this.dialog.succes("Cadastro realizado com sucesso!", "No seu primeiro login será enviado um email com um código para confirmação.", () => this.navigateTo("login"));
     }, error => {
       this.failedToRegister = true;
       this.registerForm.get('email').setValue('');
-      this.registerForm.get('email').setErrors({wrongData: true});
-      this.registerForm.get('email').setErrors({required: false});
+      this.registerForm.get('email').setErrors({ wrongData: true });
+      this.registerForm.get('email').setErrors({ required: false });
     })
   }
 
-  createRegisterForm() {
+  public navigateTo(path: string): void {
+    this.router.navigate([path]);
+  }
+
+  public createRegisterForm(): void {
     this.registerForm = this.fb.group({
       name: ['', [Validators.required, FormsValidator.emptyString, Validators.maxLength(10)]],
       lastName: ['', [Validators.required, FormsValidator.emptyString]],
@@ -64,7 +63,7 @@ export class RegisterComponent implements OnInit {
     }, { validator: this.checkIfMatchingPasswords('password', 'passwordConfirmation') })
   }
 
-  checkIfMatchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
+  public checkIfMatchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
     return (group: FormGroup) => {
       let passwordInput = group.controls[passwordKey],
         passwordConfirmationInput = group.controls[passwordConfirmationKey];

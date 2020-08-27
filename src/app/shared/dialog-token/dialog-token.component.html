@@ -1,0 +1,34 @@
+<div class="dialog">
+    <div class="dialog-header text-light p-4 d-flex align-items-center justify-content-between warning bg-warning">
+        <div class="d-flex align-items-center">
+            <i class="material-icons f-25">warning</i>
+            <span class="f-20 font-weight-bold ml-2">
+                Confirmação necessária
+            </span>
+        </div>
+        <button type="button" class="close d-flex justify-content-end" mat-dialog-close>
+            <span class="text-light">&times;</span>
+        </button>
+    </div>
+    <div class="dialog-body align-items-center p-4">
+        <div class="d-block mb-2">
+            <span class="f-18 d-block mb-1">Opa... É necessário uma confirmação para que possa continuar.</span>
+            <span class="f-18 d-block">Mandamos para seu e-mail um código, por favor nos informe abaixo.</span>
+        </div>
+        <div class="d-block">
+            <mat-form-field appearance="standard">
+                <mat-label>Código de Confirmação</mat-label>
+                <input matInput [(ngModel)]="token">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="dialog-bottom d-flex justify-content-end align-items-center pb-4 px-4">
+        <div>
+            <button type="button" mat-dialog-close class="btn btn-secondary">Cancel</button>
+        </div>
+        <div>
+            <button type="button" class="btn text-light ml-2 bg-primary" (click)="onConfirm()"
+                cdkFocusInitial>Continuar</button>
+        </div>
+    </div>
+</div>

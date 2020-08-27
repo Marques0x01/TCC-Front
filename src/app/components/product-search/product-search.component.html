@@ -1,27 +1,39 @@
 <div class="container py-5 text-light-purple">
     <div class="row">
         <div class="col-md-12 col-lg-3">
-            <form [formGroup]="searchForm" (submit)="onSearch()">
-                <div class="row" *ngIf="textSearched">
+            <form [formGroup]="searchForm" (submit)="onSearchProduct()">
+                <div class="row" *ngIf="product.title">
                     <div class="col-sm-12">
-                        <span class="d-block f-18 font-weight-bold">{{textSearched}}</span>
-                        <span class="d-flex flex-row-reverse f-12">123 resultados</span>
+                        <span class="font-weight-bold">Produto</span>
+                    </div>
+                    <div class="col-sm-12">
+                        <span class="d-block">{{product.title}}</span>
                     </div>
                 </div>
-                <div class="row my-4">
+                <div [className]="product.title ? 'row my-3' : 'row mb-3'">
                     <div class="col-sm-12">
                         <span class="font-weight-bold">Procurar</span>
                     </div>
                     <div class="col-sm-12">
                         <div class="input-group">
                             <input type="text" class="form-control border-light-purple text-light-purple input-size"
-                                formControlName="search">
+                                formControlName="title">
                             <div class="input-group-append pointe input-size pointer">
                                 <span class="input-group-text bg-light border-light-purple" id="basic-addon2">
-                                    <mat-icon class="material-icons f-25 text-light-purple">search</mat-icon>
+                                    <mat-icon class="material-icons f-25 text-light-purple" (click)="onSearchProduct()">
+                                        search</mat-icon>
                                 </span>
                             </div>
                         </div>
+                        <span class="d-flex flex-row-reverse f-12">{{resultCount}} resultado(s)</span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-12">
+                        <button class="btn-main bg-primary" type="submit">Pesquisar</button>
+                    </div>
+                    <div class="col-sm-12 mt-2">
+                        <button class="btn-main bg-primary" type="reset">Limpar</button>
                     </div>
                 </div>
                 <div class="row my-4">
@@ -29,10 +41,15 @@
                         <span class="font-weight-bold">Categorias</span>
                     </div>
                     <div class="col-sm-12 mt-1">
-                        <section *ngFor="let category of categories; index as i;">
-                            <mat-checkbox (change)="toggleFormsItem(category.name, 'categories')" color="primary">
-                                {{category.title}}</mat-checkbox>
-                        </section>
+                        <mat-radio-group formControlName="category">
+                            <mat-radio-button class="d-block mt-2" [value]="null" color="primary">
+                                Não Especificar
+                            </mat-radio-button>
+                            <mat-radio-button class="d-block" *ngFor="let category of categories; index as i;"
+                                [value]="category.name" color="primary">
+                                {{category.title}}
+                            </mat-radio-button>
+                        </mat-radio-group>
                     </div>
                 </div>
                 <div class="row my-4">
@@ -40,10 +57,15 @@
                         <span class="font-weight-bold">Tipo de alugel</span>
                     </div>
                     <div class="col-sm-12 mt-1">
-                        <section *ngFor="let type of rentTypes; index as i">
-                            <mat-checkbox (change)="toggleFormsItem(type.name, 'rentTypes')" color="primary">
-                                {{type.title}}</mat-checkbox>
-                        </section>
+                        <mat-radio-group formControlName="rentType">
+                            <mat-radio-button class="d-block mt-2" [value]="null" color="primary">
+                                Não Especificar
+                            </mat-radio-button>
+                            <mat-radio-button class="d-block" *ngFor="let type of rentTypes; index as i"
+                                [value]="type.name" color="primary">
+                                {{type.title}}
+                            </mat-radio-button>
+                        </mat-radio-group>
                     </div>
                 </div>
                 <div class="row">
@@ -72,7 +94,7 @@
                             <mat-label>Estado</mat-label>
                             <select matNativeControl (change)="onSelectState()" formControlName="state">
                                 <option value="" disabled selected></option>
-                                <option *ngFor="let state of states; index as i"  [ngValue]="state">
+                                <option *ngFor="let state of states; index as i" [ngValue]="state">
                                     {{state.nome}} - {{state.sigla}}</option>
                             </select>
                         </mat-form-field>
@@ -80,17 +102,12 @@
                     <div class="col-sm-12" *ngIf="this.searchForm.get('state').value != null">
                         <mat-form-field>
                             <mat-label>Cidade</mat-label>
-                            <select matNativeControl  formControlName="city">
+                            <select matNativeControl formControlName="city">
                                 <option value="" disabled selected></option>
                                 <option *ngFor="let city of cities; index as i" [ngValue]="city">
                                     {{city.nome}}</option>
                             </select>
                         </mat-form-field>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-sm-12">
-                        <button class="btn-main bg-primary" type="submit">Pesquisar</button>
                     </div>
                 </div>
             </form>
@@ -101,12 +118,12 @@
                     <div class="row product-card box-shadow-light-grey-100 pointer mb-4"
                         *ngFor="let product of products; index as i">
                         <div class="product-image col-sm-2 d-flex justify-content-center bg-light-grey">
-                            <img [src]="product.image" width="120" height="140" alt="...">
+                            <img [src]="product.image.picByte" width="120" height="140" alt="...">
                         </div>
                         <div class="product-info col-sm-6 py-md-2 py-sm-4">
-                            <span class="product-name f-15">{{product.name}}</span>
+                            <span class="product-name f-15">{{product.title}}</span>
                             <div class="d-flex align-items-end py-2">
-                                <span class="f-13">Cidade, Bairro</span>
+                                <span class="f-13">{{product.city}} - {{product.state}}</span>
                             </div>
                         </div>
                         <div class="col-sm-4 pt-md-2 d-flex justify-content-between">

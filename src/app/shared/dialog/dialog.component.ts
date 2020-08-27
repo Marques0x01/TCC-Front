@@ -14,6 +14,7 @@ export class DialogComponent implements OnInit {
     type: string,
     icon: string,
     message: string,
+    secondMessage: string,
     title: string,
     showCancel: boolean,
     showConfirmation: boolean,
@@ -23,7 +24,7 @@ export class DialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.data.width = this.data.width == undefined ? 500 : this.data.width;
+    this.data.width = this.data.width == undefined ? 700 : this.data.width;
     this.data.height = this.data.height == undefined ? 200 : this.data.height;
     this.data.showCancel = this.data.showCancel == undefined ? true : this.data.showCancel;
     this.data.showConfirmation = this.data.showConfirmation == undefined ? true : this.data.showConfirmation;

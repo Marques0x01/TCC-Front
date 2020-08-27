@@ -89,7 +89,7 @@ export class ProductRegisterComponent implements OnInit {
 
     let productRegister: ProductRegister = this.buildProduct();
 
-    this.service.ProductSave(productRegister).subscribe(async response => {
+    this.service.ProductSave(productRegister).subscribe(response => {
       let product = <ProductRegister>response;
       this.uploadImage(product.id);
       this.invalidTerms = false;
@@ -98,6 +98,7 @@ export class ProductRegisterComponent implements OnInit {
           id: product.id
         }
       };
+      
       this.router.navigate(["/produto"], navigationExtras);
     })
 

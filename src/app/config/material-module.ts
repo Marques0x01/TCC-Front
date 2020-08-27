@@ -29,7 +29,7 @@ import {MatInputModule} from '@angular/material/input';
 // import {MatPaginatorModule} from '@angular/material/paginator';
 // import {MatProgressBarModule} from '@angular/material/progress-bar';
 // import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-// import {MatRadioModule} from '@angular/material/radio';
+import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 // import {MatSidenavModule} from '@angular/material/sidenav';
 // import {MatSliderModule} from '@angular/material/slider';
@@ -75,7 +75,7 @@ import { NgModule } from '@angular/core';
     // MatPaginatorModule,
     // MatProgressBarModule,
     // MatProgressSpinnerModule,
-    // MatRadioModule,
+    MatRadioModule,
     // MatRippleModule,
     MatSelectModule,
     // MatSidenavModule,

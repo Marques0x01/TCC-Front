@@ -1,10 +1,9 @@
 import { Component, OnInit, ElementRef, ViewChild, Renderer2 } from '@angular/core';
-import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Router, NavigationStart } from '@angular/router';
 import { User } from '@app/models/user';
 import { CategoriesModel } from '@app/models/categories.model';
-import { Utils } from '@app/utils/utils';
 import { DialogModals } from '@app/utils/dialog-modals';
+import { ApiService } from '@app/services/api.service';
 
 @Component({
   selector: 'app-header',
@@ -26,7 +25,7 @@ export class HeaderComponent implements OnInit {
   @ViewChild('Sidenav') sidenav: ElementRef;
 
 
-  constructor(private router: Router, public dialog: DialogModals) {
+  constructor(private router: Router, public dialog: DialogModals, private service: ApiService) {
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
         if (event['url'] == '/login' || event['url'] == '/registrar') {
@@ -61,6 +60,23 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  public confirmUser(): void {
+    let user = JSON.parse(sessionStorage.getItem('user'))
+    if (!user.isConfirmed) {
+      console.log(user.email);
+      
+      if(!user.email){
+        return;
+      }
+      this.service.SendConfirmationEmail(user.email).subscribe(response => {
+        this.dialog.authenticateUser(user, () => this.router.navigate(["conta"])
+        );
+      });
+      return;
+    }
+    this.router.navigate(["conta"]);
+  }
+
   public toggleNav(): void {
     if (this.isSidebarOpen) {
       this.closeNav();
@@ -83,9 +99,21 @@ export class HeaderComponent implements OnInit {
   }
 
   public onAnnounce(): void {
-    if(this.isLogged){
+    if (this.isLogged) {    
+      let user = JSON.parse(sessionStorage.getItem('user'))
+      if (!user.isConfirmed) {
+        console.log(user.email);
+        
+        if(!user.email){
+          return;
+        }
+        this.service.SendConfirmationEmail(user.email).subscribe(response => {
+          this.dialog.authenticateUser(user, () => this.router.navigate(["registrar-produto"]));
+        });
+        return;
+      }
       this.router.navigate(["registrar-produto"]);
-    }  else {
+    } else {
       this.dialog.loginError();
     }
   }

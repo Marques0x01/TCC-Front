@@ -1,5 +1,5 @@
-<div [ngStyle]="{'width.px': data.width, 'height.px': data.height}" class="dialog">
-  <div [ngClass]="data.type" class="dialog-header text-light px-4 d-flex align-items-center justify-content-between">
+<div [ngStyle]="{'width.px': data.width}" class="dialog">
+  <div [ngClass]="data.type" class="dialog-header text-light p-4 d-flex align-items-center justify-content-between">
     <div class=" d-flex align-items-center">
       <i class="material-icons f-25">{{data.icon}}</i>
       <span class="f-20 font-weight-bold ml-2">
@@ -10,15 +10,17 @@
       <span class="text-light">&times;</span>
     </button>
   </div>
-  <div class="dialog-body d-flex align-items-center px-4">
-    <span class="f-18">{{data.message}}</span>
+  <div class="dialog-body  p-4">
+    <span class="f-18 d-block mb-1">{{data.message}}</span>
+    <span class="f-18 d-block" *ngIf="data.secondMessage">{{data.secondMessage}}</span>
   </div>
-  <div class="dialog-bottom d-flex justify-content-end align-items-center px-4">
+  <div class="dialog-bottom d-flex justify-content-end align-items-center pb-4 px-4">
     <div *ngIf="data.showCancel">
       <button type="button" mat-dialog-close class="btn btn-secondary">{{data.cancelText}}</button>
     </div>
     <div *ngIf="data.showConfirmation">
-      <button type="button" [ngClass]="data.type" class="btn text-light ml-2" [mat-dialog-close]="true" cdkFocusInitial>{{data.confirmationText}}</button>
+      <button type="button" [ngClass]="data.type" class="btn text-light ml-2 px-5" [mat-dialog-close]="true"
+        cdkFocusInitial>{{data.confirmationText}}</button>
     </div>
   </div>
 </div>

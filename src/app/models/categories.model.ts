@@ -11,13 +11,26 @@ export class CategoriesModel {
     ]
 }
 
+export class Category {
+    public static category: Object = {
+        ELETRONIC: { id: 1, name: "ELETRONIC", title: "Eletrônico" },
+        PARTY: { id: 2, name: "PARTY", title: "Festa" },
+        SPORT: { id: 3, name: "SPORT", title: "Esporte" },
+        BOOKS: { id: 4, name: "BOOKS", title: "Livro" },
+        MUSIC: { id: 5, name: "MUSIC", title: "Musica" },
+        FURNITURE: { id: 6, name: "FURNITURE", title: "Mobílias" },
+        CLOTH: { id: 7, name: "CLOTH", title: "Roupa" },
+        OTHERS: { id: 8, name: "OTHERS", title: "Outros" }
+    }
+}
+
 export enum CategoriesEnum {
-    ELETRONIC = 1,
-    PARTY = 2,
-    SPORTS = 3,
-    BOOKS = 4,
-    MUSIC = 5,
-    FURNITURE = 6,
-    CLOTHS = 7,
-    OTHERS = 8
+    ELETRONIC,
+    PARTY,
+    SPORTS,
+    BOOKS,
+    MUSIC,
+    FURNITURE,
+    CLOTHS,
+    OTHERS 
 }

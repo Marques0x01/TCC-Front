@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
     }
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        textSearched: this.search
+        title: this.search
       }
     };
     this.router.navigate(["/pesquisar"], navigationExtras);
