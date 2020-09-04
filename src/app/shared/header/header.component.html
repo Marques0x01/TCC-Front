@@ -5,14 +5,14 @@
         <div class="d-flex align-items-center">
           <div class="d-flex align-items-center" [routerLink]="['/']">
             <img src="../assets/icons/icon.png" width="55" height="55" alt="logo" class="logo pointer" />
-            <div class="f-17 mr-4 text-light font-weight-bold pointer">CONCLUSÃO</div>
+            <div class="f-17 mr-4 text-light font-weight-bold pointer">Rent Shop</div>
           </div>
           <div class="d-flex align-items-center" *ngIf="pageWidth > 1000">
             <div class="custom-search-input mr-3">
               <div class="input-group">
-                <input type="text" class="form-control text-primary input-lg" placeholder="Buscar" />
+                <input type="text" class="form-control text-primary input-lg" placeholder="Buscar" [(ngModel)]="searchText" (keyup.enter)="onSearch()" />
                 <span class="input-group-btn">
-                  <button class="btn btn-info btn-lg" type="button">
+                  <button class="btn btn-info btn-lg" type="button" (click)="onSearch()">
                     <mat-icon class="material-icons f-25">search</mat-icon>
                   </button>
                 </span>
@@ -23,7 +23,7 @@
                 <button class="btn btn-light btn-sm" id="dropdown-category" ngbDropdownToggle>Categorias</button>
                 <div ngbDropdownMenu aria-labelledby="dropdown-category">
                   <button ngbDropdownItem class="f-13"
-                    *ngFor="let category of categories; indes as i">{{category.title}}</button>
+                    *ngFor="let category of categories; indes as i" (click)="onSelectCategory(category.name)">{{category.title}}</button>
                 </div>
               </div>
             </div>

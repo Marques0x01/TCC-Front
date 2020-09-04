@@ -113,7 +113,14 @@
             </form>
         </div>
         <div class="col-md-12 col-lg-9">
-            <div class="row">
+            <div class="row mt-4" *ngIf="resultCount <= 0">
+                <div class="col-sm-12">
+                    <div class="d-flex justify-content-center">
+                        <span class="text-danger">Não foi encontrado nenhum produto com os filtros selecionados</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="resultCount > 0">
                 <div class="col-sm-12">
                     <div class="row product-card box-shadow-light-grey-100 pointer mb-4"
                         *ngFor="let product of products; index as i">

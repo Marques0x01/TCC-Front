@@ -5,6 +5,8 @@ import { FormGroup, FormBuilder, Form, Validators } from '@angular/forms';
 import { Utils } from '@app/utils/utils';
 import { FormsValidator } from '@app/utils/forms-validator';
 import { AddressUpdate } from '@app/models/address.model';
+import { DialogModals } from '@app/utils/dialog-modals';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account',
@@ -21,7 +23,7 @@ export class AccountComponent implements OnInit {
   public passwordChangeForm: FormGroup;
   public utils: Utils = new Utils();
 
-  constructor(private service: ApiService, private fb: FormBuilder) { }
+  constructor(private service: ApiService, private fb: FormBuilder, private dialog: DialogModals, private router: Router) { }
 
   ngOnInit(): void {
     this.createDataForm();
@@ -80,7 +82,7 @@ export class AccountComponent implements OnInit {
   }
 
   public saveData(): void {
-    if(this.dataForm.invalid){
+    if (this.dataForm.invalid) {
       return;
     }
     let user: UserView = this.dataForm.getRawValue();
@@ -97,7 +99,7 @@ export class AccountComponent implements OnInit {
   }
 
   public saveAddress(): void {
-    if(this.addressForm.invalid){
+    if (this.addressForm.invalid) {
       return;
     }
     let address: AddressUpdate = this.addressForm.getRawValue();
@@ -138,19 +140,69 @@ export class AccountComponent implements OnInit {
 
   public createEmailChangeForm(): void {
     this.emailChangeForm = this.fb.group({
-      email: [''],
-      emailConfirmation: ['']
-    })
+      email: ['', Validators.required],
+      emailConfirmation: ['', Validators.required]
+    }, { validator: this.checkIfMatchingStrings('email', 'emailConfirmation') })
   }
 
   public createPasswordChangeForm(): void {
     this.passwordChangeForm = this.fb.group({
-      oldPassword: [''],
-      password: [''],
-      passwordConfirmation: ['']
+      oldPassword: ['', Validators.required],
+      password: ['', Validators.required],
+      passwordConfirmation: ['', Validators.required]
+    }, { validator: this.checkIfMatchingStrings('password', 'passwordConfirmation') })
+  }
+
+  public updatePassword() {
+    if (!this.passwordChangeForm.valid) {
+      return;
+    }
+
+    if (this.passwordChangeForm.get('password').value == this.passwordChangeForm.get('oldPassword').value) {
+      return;
+    }
+
+    let user = JSON.parse(sessionStorage.getItem('user'));
+    this.service.ChangePassword(user.id, this.passwordChangeForm.get('password').value, this.passwordChangeForm.get('oldPassword').value).subscribe(response => {
+      this.dialog.succes("Senha alterada com sucesso");
+    }, error => {
+      this.dialog.error("Não foi possivel realizar a autenticação");
     })
   }
 
+  public updateEmail() {
+    if (!this.emailChangeForm.valid) {
+      return;
+    }
 
+    let user = JSON.parse(sessionStorage.getItem('user'));
+    this.service.ChangeEmail(user.email, this.emailChangeForm.get('emailConfirmation').value).subscribe(response => {
+      this.service.Renew(this.emailChangeForm.get('emailConfirmation').value).subscribe(response => {
+        sessionStorage.setItem('user', JSON.stringify(response));
+        this.dialog.succes("E-mail trocado com sucesso!");
+        this.emailChangeForm.get('email').setValue('');
+        this.emailChangeForm.get('emailConfirmation').setValue('');
+        this.getUser();
+      }, error => {
+        this.service.Logout();
+        this.dialog.error("Não foi possivel realizar a autenticação", "Por favor, realize o login novamente", () => this.router.navigateByUrl["login"]);
+      })
+    }, error => {
+      this.dialog.error("Não foi possivel realizar a autenticação");
+    });
+  }
+
+  public checkIfMatchingStrings(stringKey: string, stringConfirmationKey: string) {
+    return (group: FormGroup) => {
+      let stringInput = group.controls[stringKey],
+        stringConfirmationInput = group.controls[stringConfirmationKey];
+      if (stringInput.value !== stringConfirmationInput.value) {
+        return stringConfirmationInput.setErrors({ notEquivalent: true })
+      }
+      else {
+        return stringConfirmationInput.setErrors(null);
+      }
+    }
+  }
 
 }

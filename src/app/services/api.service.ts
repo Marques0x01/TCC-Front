@@ -33,9 +33,12 @@ export class ApiService {
     return this.http.post(this.baseUrl + '/auth/signin', user);
   }
 
+  Renew(email: string) {
+    return this.http.get(this.baseUrl + `/auth/renew?email=${email}`);
+  }
+
   Logout() {
     sessionStorage.removeItem('user');
-    this.router.navigateByUrl('/login');
   }
 
   GetAllUsers() {
@@ -91,6 +94,18 @@ export class ApiService {
 
   ConfirmToken(token: string, email: string) {
     return this.httpInterceptor.get(this.baseUrl + `/user/confirmation-token?email=${email}&token=${token}`);
+  }
+
+  ChangeEmail(oldEmail: string, email: string) {
+    return this.httpInterceptor.get(this.baseUrl + `/user/change-email?email=${email}&oldEmail=${oldEmail}`);
+  }
+
+  ChangePassword(id: number, password: string, oldPassword: string) {
+    let params = new HttpParams()
+      .set('password', password)
+      .set('oldPassword', oldPassword);
+
+    return this.httpInterceptor.get(this.baseUrl + `/user/change-password/${id}`, {params: params});
   }
 
   ImageSave(file: File, product: number) {

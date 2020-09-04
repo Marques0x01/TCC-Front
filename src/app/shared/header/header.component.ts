@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild, Renderer2 } from '@angular/core';
-import { Router, NavigationStart } from '@angular/router';
+import { Router, NavigationStart, NavigationExtras } from '@angular/router';
 import { User } from '@app/models/user';
 import { CategoriesModel } from '@app/models/categories.model';
 import { DialogModals } from '@app/utils/dialog-modals';
@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
 
   public isCollapsedCategories: boolean = true;
   public isCollapsedUser: boolean = true;
+  public searchText: string;
 
   @ViewChild('SidenavButton') sidenavButton: ElementRef;
   @ViewChild('Sidenav') sidenav: ElementRef;
@@ -47,10 +48,30 @@ export class HeaderComponent implements OnInit {
     this.pageWidth = window.innerWidth;
   }
 
+  public onSelectCategory(category: string): void {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        category: category
+      }
+    };
+    this.router.navigate(["/pesquisar"], navigationExtras);
+  }
+
+  public onSearch(): void{
+    if (!this.searchText || this.searchText == "") {
+      return null;
+    }
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        title: this.searchText
+      }
+    };
+    this.router.navigate(["/pesquisar"], navigationExtras);
+  }
+
   public logout(): void {
-    sessionStorage.removeItem('user');
-    location.reload();
-    this.router.navigateByUrl('/')
+    this.service.Logout();
+    this.router.navigateByUrl('/login');
   }
 
   public onResize(e): void {
@@ -63,8 +84,6 @@ export class HeaderComponent implements OnInit {
   public confirmUser(): void {
     let user = JSON.parse(sessionStorage.getItem('user'))
     if (!user.isConfirmed) {
-      console.log(user.email);
-      
       if(!user.email){
         return;
       }

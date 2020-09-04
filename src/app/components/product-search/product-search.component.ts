@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CategoriesModel } from '@app/models/categories.model';
+import { CategoriesModel, CategoriesEnum } from '@app/models/categories.model';
 import { RentTypeModel } from '@app/models/rentType.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApiService } from '@app/services/api.service';
@@ -29,6 +29,9 @@ export class ProductSearchComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (params && params.title) {
         this.product.title = <string>params.title;
+      }
+      if (params && params.category) {
+        this.product.category = <CategoriesEnum>params.category;
       }
       this.searchProduct(this.product);
 

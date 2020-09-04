@@ -233,7 +233,7 @@
                     <span class="f-15 font-weight-bold">Trocar de E-mail</span>
                 </div>
             </div>
-            <form [formGroup]="emailChangeForm">
+            <form [formGroup]="emailChangeForm" (submit)="updateEmail()">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6">
                         <mat-form-field appearance="standard">
@@ -243,15 +243,19 @@
                     </div>
                     <div class="col-sm-12 col-lg-6">
                         <mat-form-field appearance="standard">
-                            <mat-label>Confirmação o E-mail</mat-label>
-                            <input matInput formControlname="emailConfirmation">
+                            <mat-label>Confirmação de E-mail</mat-label>
+                            <input matInput formControlName="emailConfirmation">
+                            <mat-error
+                            *ngIf="utils.hasError(emailChangeForm, 'emailConfirmation', 'notEquivalent')">
+                            E-mails diferentes
+                        </mat-error>
                         </mat-form-field>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="d-flex justify-content-end">
-                            <button class="btn btn-primary border-radius-30 px-4">
+                            <button class="btn btn-primary border-radius-30 px-4" type="submit">
                                 Trocar E-mail
                             </button>
                         </div>
@@ -263,18 +267,24 @@
                     <span class="f-15 font-weight-bold">Trocar Senha</span>
                 </div>
             </div>
-            <form [formGroup]="passwordChangeForm">
+            <form [formGroup]="passwordChangeForm" (submit)="updatePassword()">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6">
                         <mat-form-field appearance="standard">
                             <mat-label>Senha Antiga</mat-label>
-                            <input matInput formControlName="oldPassword">
+                            <input type="password" matInput formControlName="oldPassword">
+                            <mat-error *ngIf="utils.hasError(passwordChangeForm, 'oldPassword', 'required')">
+                                Senha antiga necessária
+                            </mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-sm-12 col-lg-6">
                         <mat-form-field appearance="standard">
                             <mat-label>Nova Senha</mat-label>
-                            <input matInput formControlName="password">
+                            <input type="password" matInput formControlName="password">
+                            <mat-error *ngIf="utils.hasError(passwordChangeForm, 'password', 'required')">
+                                Nova senha necessária
+                            </mat-error>
                         </mat-form-field>
                     </div>
                 </div>
@@ -282,14 +292,21 @@
                     <div class="col-sm-6">
                         <mat-form-field appearance="standard">
                             <mat-label>Confirmação de Senha</mat-label>
-                            <input matInput formControlName="passwordConfirmation">
+                            <input type="password" matInput formControlName="passwordConfirmation">
+                            <mat-error
+                                *ngIf="utils.hasError(passwordChangeForm, 'passwordConfirmation', 'notEquivalent')">
+                                Senhas diferentes
+                            </mat-error>
+                            <mat-error *ngIf="utils.hasError(passwordChangeForm, 'passwordConfirmation', 'required')">
+                                Confirmação de nova senha necessária
+                            </mat-error>
                         </mat-form-field>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="d-flex justify-content-end">
-                            <button class="btn btn-primary border-radius-30 px-4">
+                            <button class="btn btn-primary border-radius-30 px-4" type="submit">
                                 Trocar Senha
                             </button>
                         </div>
