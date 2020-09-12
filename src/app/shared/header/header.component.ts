@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router, public dialog: DialogModals, private service: ApiService) {
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
-        if (event['url'] == '/login' || event['url'] == '/registrar') {
+        if (event['url'] == '/login' || event['url'] == '/registrar' || event['url'] == '/recuperacao') {
           this.showHeader = false;
         } else {
           this.showHeader = true;

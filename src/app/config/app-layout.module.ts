@@ -11,6 +11,7 @@ import { AccountComponent } from '@app/components/account/account.component';
 import { ProductComponent } from '@app/components/product/product.component';
 import { ProductRegisterComponent } from '@app/components/product-register/product-register.component';
 import { DialogTokenComponent } from '@app/shared/dialog-token/dialog-token.component';
+import { RecoverPassComponent } from '@app/recover-pass/recover-pass.component';
 
 @NgModule({
   declarations: [],
@@ -21,4 +22,4 @@ import { DialogTokenComponent } from '@app/shared/dialog-token/dialog-token.comp
 export class AppLayoutModule { }
 
 export const Components = [HomeComponent, HeaderComponent, LoginComponent, RegisterComponent, DialogComponent, DialogTokenComponent, FooterComponent, AccountComponent, 
-                           ProductSearchComponent, ProductComponent, ProductRegisterComponent]
+                           ProductSearchComponent, ProductComponent, ProductRegisterComponent, RecoverPassComponent]

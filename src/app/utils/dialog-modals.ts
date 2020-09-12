@@ -27,7 +27,9 @@ export class DialogModals {
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
-                callback();
+                if(callback){
+                    callback();
+                }
             }
         });
     }

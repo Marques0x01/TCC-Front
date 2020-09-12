@@ -108,6 +108,14 @@ export class ApiService {
     return this.httpInterceptor.get(this.baseUrl + `/user/change-password/${id}`, {params: params});
   }
 
+  RecoverPassword(email: string, password: string) {
+    let params = new HttpParams()
+      .set('password', password)
+      .set('email', email);
+
+    return this.http.get(this.baseUrl + `/user/recover-password`, {params: params});
+  }
+
   ImageSave(file: File, product: number) {
     const formData: FormData = new FormData();
     formData.append('file', file);

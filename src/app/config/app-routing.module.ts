@@ -7,6 +7,7 @@ import { ProductSearchComponent } from '@app/components/product-search/product-s
 import { AccountComponent } from '@app/components/account/account.component';
 import { ProductComponent } from '@app/components/product/product.component';
 import { ProductRegisterComponent } from '@app/components/product-register/product-register.component';
+import { RecoverPassComponent } from '@app/recover-pass/recover-pass.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'pesquisar', component: ProductSearchComponent },
   { path: 'produto', component: ProductComponent },
   { path: 'registrar-produto', component: ProductRegisterComponent },
+  { path: 'recuperacao', component: RecoverPassComponent}
 ];
 
 @NgModule({
