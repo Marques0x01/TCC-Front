@@ -7,7 +7,7 @@ import { ProductSearchComponent } from '@app/components/product-search/product-s
 import { AccountComponent } from '@app/components/account/account.component';
 import { ProductComponent } from '@app/components/product/product.component';
 import { ProductRegisterComponent } from '@app/components/product-register/product-register.component';
-import { RecoverPassComponent } from '@app/recover-pass/recover-pass.component';
+import { RecoverPassComponent } from '@app/components/recover-pass/recover-pass.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

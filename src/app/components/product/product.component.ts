@@ -41,6 +41,10 @@ export class ProductComponent implements OnInit {
     this.mainImage = this.product.images[i];
   }
 
+  public goToWpp(): void {
+    window.open('https://api.whatsapp.com/send?phone=' + this.product.user.phoneNumber,'_blank') 
+  }
+
 
 
 }

@@ -11,7 +11,7 @@ import { AccountComponent } from '@app/components/account/account.component';
 import { ProductComponent } from '@app/components/product/product.component';
 import { ProductRegisterComponent } from '@app/components/product-register/product-register.component';
 import { DialogTokenComponent } from '@app/shared/dialog-token/dialog-token.component';
-import { RecoverPassComponent } from '@app/recover-pass/recover-pass.component';
+import { RecoverPassComponent } from '@app/components/recover-pass/recover-pass.component';
 
 @NgModule({
   declarations: [],

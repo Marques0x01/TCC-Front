@@ -58,6 +58,8 @@ export class ProductSearchComponent implements OnInit {
 
   public searchProduct(product?: ProductSearch): void {
     this.service.SearchProduct(product).subscribe(response => {
+      console.log(response);
+      
       this.products = <Array<ProductSearchResult>>response;
       this.products.forEach(item => {
         item.image.picByte = 'data:image/jpeg;base64,' + item.image.picByte;
@@ -94,7 +96,6 @@ export class ProductSearchComponent implements OnInit {
         this.cities = this.utils.orderArray(<Array<any>>response, "nome");
       })
     }
-
   }
 
 }
