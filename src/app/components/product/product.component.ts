@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ProductBasicData } from '@app/models/product.model';
 import { RentType } from '@app/models/rentType.model';
 import { Image } from '@app/models/image.model';
+import { DialogModals } from '@app/utils/dialog-modals';
 
 @Component({
   selector: 'app-product',
@@ -16,12 +17,13 @@ export class ProductComponent implements OnInit {
   public rentType: RentType = RentType.types;
   public loading: boolean;
   public mainImage: Image;
-
-  constructor(private service: ApiService, private router: Router, private routeParams: ActivatedRoute) {
+  public user;
+  constructor(private service: ApiService, private router: Router, private routeParams: ActivatedRoute, private dialog: DialogModals) {
 
   }
 
   ngOnInit(): void {
+    this.user = JSON.parse(sessionStorage.getItem('user'));
     this.loading = true;
     let id;
     this.routeParams.queryParams.subscribe(params => {
@@ -42,9 +44,18 @@ export class ProductComponent implements OnInit {
   }
 
   public goToWpp(): void {
-    window.open('https://api.whatsapp.com/send?phone=' + this.product.user.phoneNumber,'_blank') 
+    window.open('https://api.whatsapp.com/send?phone=55' + this.product.user.phoneNumber,'_blank') 
   }
 
+  public deleteProduct(): void {    
+    this.dialog.warning("Esse anuncio será excluido permanentemente.", "Deseja continuar?", () => {
+      this.service.DeleteProduct(this.product.id).subscribe(response => {
+        this.dialog.succes("Deletado com sucesso", null, () => this.router.navigateByUrl("/"));
+      }, error => {
+        this.dialog.error("Não foi possivel realizar a exclusão " + error);
+      })
+    });
+  }
 
 
 }

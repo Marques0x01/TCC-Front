@@ -18,8 +18,11 @@
             <div class="row" style="height: 100%;">
                 <div class="col-sm-12 d-flex flex-column">
                     <div class="row">
-                        <div class="col-sm-12 mb-3">
+                        <div class="col-sm-8 mb-3">
                             <h4 class="product-text">{{product.title}}</h4>
+                        </div>
+                        <div class="col-sm-4">
+                            <button class="btn btn-danger font-weight-bold" *ngIf="this.product.user.id == user.id" (click)="deleteProduct()">X</button>
                         </div>
                     </div>
                     <div class="row">

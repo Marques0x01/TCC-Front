@@ -123,4 +123,8 @@ export class ApiService {
 
     return this.httpInterceptor.post(this.baseUrl + '/image', formData, { reportProgress: true, responseType: 'json' })
   }
+
+  DeleteProduct(id: number) {
+    return this.http.delete(this.baseUrl + `/product/${id}`);
+  }
 }

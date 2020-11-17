@@ -34,6 +34,28 @@ export class DialogModals {
         });
     }
 
+    public warning(message: string, secondMessage?: string, callback?: Function): void {
+        const dialogRef = this.dialog.open(DialogComponent, {
+            data: {
+                icon: "warning",
+                message: message,
+                secondMessage: secondMessage,
+                confirmationText: "Ok",
+                title: "Atenção",
+                type: "warning",
+                showCancel: true
+            }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                if(callback){
+                    callback();
+                }
+            }
+        });
+    }
+
     public succes(message: string, secondMessage?: string, callback?: Function): void {
         const dialogRef = this.dialog.open(DialogComponent, {
             data: {

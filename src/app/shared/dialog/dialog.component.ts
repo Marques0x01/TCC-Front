@@ -28,7 +28,7 @@ export class DialogComponent implements OnInit {
     this.data.height = this.data.height == undefined ? 200 : this.data.height;
     this.data.showCancel = this.data.showCancel == undefined ? true : this.data.showCancel;
     this.data.showConfirmation = this.data.showConfirmation == undefined ? true : this.data.showConfirmation;
-    this.data.cancelText = this.data.cancelText == undefined ? "Cancel" : this.data.cancelText;
+    this.data.cancelText = this.data.cancelText == undefined ? "Cancelar" : this.data.cancelText;
     this.data.confirmationText = this.data.confirmationText == undefined ? "Ok" : this.data.confirmationText;
     this.data.type = this.data.type == undefined ? "bg-primary" : "bg-" + this.data.type;
   }
